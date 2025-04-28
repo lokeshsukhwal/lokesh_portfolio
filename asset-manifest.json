@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/lokesh_portfolio/static/css/main.eb86130b.css",
+    "main.js": "/lokesh_portfolio/static/js/main.163ccb0d.js",
+    "static/js/453.acca0757.chunk.js": "/lokesh_portfolio/static/js/453.acca0757.chunk.js",
+    "index.html": "/lokesh_portfolio/index.html",
+    "main.eb86130b.css.map": "/lokesh_portfolio/static/css/main.eb86130b.css.map",
+    "main.163ccb0d.js.map": "/lokesh_portfolio/static/js/main.163ccb0d.js.map",
+    "453.acca0757.chunk.js.map": "/lokesh_portfolio/static/js/453.acca0757.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb86130b.css",
+    "static/js/main.163ccb0d.js"
+  ]
+}
