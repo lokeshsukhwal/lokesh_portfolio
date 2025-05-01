@@ -35,7 +35,7 @@ const Home = () => {
             <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-20 blur-xl"></div>
               <img
-                src="/images/profile.png"
+                src="https://avatars.githubusercontent.com/u/52657519?s=400&u=36a62522385028f5f4de73d22dcfff6a0ff78fe6&v=4"  
                 alt="Lokesh Sukhwal"
                 className="relative w-full h-full rounded-full object-cover border-4 border-white dark:border-gray-100 shadow-xl bounce-image"
                 loading="lazy"
