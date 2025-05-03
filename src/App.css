@@ -73,13 +73,13 @@
   animation-delay: 0.8s;
 }
 
-.gradient-text {
+/* .gradient-text {
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  /* font-family: "Amsterdam", normal;   */
-}
+  font-family: "Amsterdam", normal;  
+} */
 
 .card-hover {
   transition: all 0.3s ease;
@@ -154,4 +154,35 @@
   .nav-link {
     margin: 0 10px;
   }
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #6366f1, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 2px #ff00c8, -2px -2px #00fff9;
+  }
+  20% {
+    text-shadow: -2px 2px #ff00c8, 2px -2px #00fff9;
+  }
+  40% {
+    text-shadow: 2px -2px #ff00c8, -2px 2px #00fff9;
+  }
+  60% {
+    text-shadow: -2px -2px #ff00c8, 2px 2px #00fff9;
+  }
+  80% {
+    text-shadow: 2px 2px #ff00c8, -2px -2px #00fff9;
+  }
+  100% {
+    text-shadow: 0 0 #ff00c8, 0 0 #00fff9;
+  }
+}
+
+.glitch-text {
+  animation: glitch 1.5s infinite;
 }

@@ -33,13 +33,13 @@
   animation-delay: 0.8s;
 }
 
-.gradient-text {
+/* .gradient-text {
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  /* font-family: "Amsterdam", normal; */
-}
+  font-family: "Amsterdam", normal;
+} */
 
 .card-hover {
   transition: all 0.3s ease;

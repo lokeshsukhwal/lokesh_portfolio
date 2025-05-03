@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -6,22 +7,37 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import "./App.css"; // Import your CSS file here
-// import ReactDOM from 'react-dom/client';
+import "./App.css";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 3 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-      <Navbar />
-      <main>
-        <Home />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+          <Navbar />
+          <main>
+            <Home />
+            <About />
+            <Skills />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
 

@@ -36,7 +36,9 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-8 items-center text-gray-700 dark:text-gray-200">
           <a href="#home" className="hover:text-blue-500 nav-link">Home</a>
           <a href="#projects" className="hover:text-blue-500 nav-link">Projects</a>
+          <a href="#skills" className="hover:text-blue-500 nav-link">Skills</a>
           <a href="#contact" className="hover:text-blue-500 nav-link">Contact</a>
+
 
           <button
             onClick={toggleDarkMode}
