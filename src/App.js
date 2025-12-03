@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -40,6 +41,7 @@ function App() {
           <ScrollToTop />
         </div>
       )}
+      <SpeedInsights />
     </>
   );
 }
