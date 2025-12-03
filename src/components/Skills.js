@@ -86,7 +86,7 @@ const SkillCard = ({ skill, index }) => {
 
       {/* Card Body */}
       <motion.div
-        className="relative h-full rounded-xl bg-white dark:bg-gradient-to-br dark:from-[#1e3a5f] dark:to-[#1A2842] p-6 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm overflow-hidden"
+        className="relative h-full rounded-2xl bg-white/50 dark:bg-gray-800/30 p-6 border border-gray-200/60 dark:border-gray-700/60 backdrop-blur-sm overflow-hidden shadow-lg"
         whileHover={{ y: -8 }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
       >
@@ -199,29 +199,21 @@ export default function Skills() {
       id="skills"
       className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-100 dark:bg-[#0a0f1c] transition-colors duration-500 overflow-hidden"
     >
-      {/* Background Orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Background Orbs - only in dark mode to match theme */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden dark:block">
         <motion.div
-          className="
-            absolute top-1/4 -left-20 w-96 h-96 rounded-full blur-3xl
-            bg-gradient-to-br
-            dark:to-transparent
-          "
+          className="absolute top-1/4 -left-20 w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-sky-500/25 via-indigo-500/15 to-transparent"
           animate={{ x: [0, 50, 0], y: [0, 30, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="
-            absolute bottom-1/4 -right-20 w-96 h-96 rounded-full blur-3xl
-            bg-gradient-to-bl
-            dark:to-transparent
-          "
+          className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-full blur-3xl bg-gradient-to-bl from-pink-500/25 via-purple-500/15 to-transparent"
           animate={{ x: [0, -50, 0], y: [0, -30, 0], scale: [1, 1.2, 1] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      {/* Container aligned with Projects */}
+      {/* Container aligned with About */}
       <div className="relative w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24">
         {/* Header */}
         <motion.div
@@ -231,18 +223,10 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-block mb-4"
-          ></motion.div>
-
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 font-orbitron">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-orbitron text-gray-800 dark:text-white mb-4">
             Technical{" "}
             <span className="relative inline-block">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7F56D9] via-[#EB3A84] to-[#7F56D9] animate-gradient font-orbitron">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7F56D9] via-[#EB3A84] to-[#7F56D9] animate-gradient">
                 Skills
               </span>
               <motion.div
@@ -260,13 +244,13 @@ export default function Skills() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto "
+            className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto"
           >
             Crafting robust solutions with cutting-edge technologies
           </motion.p>
         </motion.div>
 
-        {/* Skills Grid (aligned with Projects) */}
+        {/* Skills Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 w-full">
           {skills.map((skill, index) => (
             <SkillCard key={skill.title} skill={skill} index={index} />
