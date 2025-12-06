@@ -81,7 +81,7 @@ const SkillCard = ({ skill, index }) => {
       {/* Glow */}
       <motion.div
         className={`absolute -inset-0.5 bg-gradient-to-r ${skill.color} rounded-xl opacity-0 blur-lg transition-opacity duration-500`}
-        animate={{ opacity: isHovered ? 0.6 : 0 }}
+        animate={{ opacity: isHovered ? 0.1 : 0 }}
       />
 
       {/* Card Body */}
