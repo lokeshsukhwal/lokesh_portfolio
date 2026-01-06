@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import {
   FaJava,
+  FaPython,
   FaDatabase,
   FaCloud,
   FaTools,
@@ -20,6 +21,14 @@ const skills = [
     shadowColor: "shadow-blue-500/50",
   },
   {
+    title: "Python",
+    description: "Data structures, OOP, Scripting & Backend Automation",
+    icon: <FaPython />,
+    percent: 85,
+    color: "from-yellow-400 to-yellow-500",
+    shadowColor: "shadow-yellow-400/50",
+  },
+  {
     title: "Spring Framework",
     description: "Spring Boot, MVC, Security & Microservices",
     icon: <SiSpring />,
@@ -36,24 +45,16 @@ const skills = [
     shadowColor: "shadow-orange-500/50",
   },
   {
-    title: "Microservices",
-    description: "Docker, Kubernetes & Cloud Architecture",
-    icon: <FaCodeBranch />,
-    percent: 80,
+    title: "Cloud & Microservices",
+    description: "Docker, Kubernetes & AWS cloud-native architecture",
+    icon: <FaCloud />,
+    percent: 75,
     color: "from-purple-500 to-pink-600",
     shadowColor: "shadow-purple-500/50",
   },
   {
-    title: "DevOps",
-    description: "CI/CD, Docker, Kubernetes & AWS/Azure",
-    icon: <FaTools />,
-    percent: 70,
-    color: "from-yellow-500 to-orange-600",
-    shadowColor: "shadow-yellow-500/50",
-  },
-  {
     title: "Problem Solving",
-    description: "Analytical thinking & Complex challenges",
+    description: "Analytical thinking & solving complex backend challenges",
     icon: <FaBrain />,
     percent: 90,
     color: "from-cyan-500 to-blue-600",
@@ -199,7 +200,7 @@ export default function Skills() {
       id="skills"
       className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-100 dark:bg-[#0a0f1c] transition-colors duration-500 overflow-hidden"
     >
-      {/* Background Orbs - only in dark mode to match theme */}
+      {/* Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden dark:block">
         <motion.div
           className="absolute top-1/4 -left-20 w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-sky-500/25 via-indigo-500/15 to-transparent"
@@ -213,9 +214,7 @@ export default function Skills() {
         />
       </div>
 
-      {/* Container aligned with About */}
       <div className="relative w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -246,18 +245,16 @@ export default function Skills() {
             transition={{ delay: 0.3 }}
             className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto"
           >
-            Crafting robust solutions with cutting-edge technologies
+            Crafting robust solutions with Java and Python backend technologies
           </motion.p>
         </motion.div>
 
-        {/* Skills Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 w-full">
           {skills.map((skill, index) => (
             <SkillCard key={skill.title} skill={skill} index={index} />
           ))}
         </div>
 
-        {/* Footer */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -283,7 +280,6 @@ export default function Skills() {
         </motion.div>
       </div>
 
-      {/* Gradient Animation */}
       <style jsx>{`
         @keyframes gradient {
           0%,

@@ -5,26 +5,42 @@ const projects = [
   {
     title: "Financial Analytics Platform",
     description:
-      "A real-time financial data processing system built with Spring Boot and Kafka.",
-    tags: ["Java", "Spring Boot", "Kafka", "PostgreSQL"],
-    colors: ["bg-blue-100", "bg-green-100", "bg-purple-100", "bg-yellow-100"],
+      "A real-time financial data processing system built with Java Spring Boot and Python for analytics pipelines.",
+    tags: ["Java", "Spring Boot", "Python", "PostgreSQL"],
+    colors: ["bg-blue-100", "bg-green-100", "bg-yellow-100", "bg-purple-100"],
     icon: "📈",
   },
   {
     title: "E-commerce Microservices",
     description:
-      "Scalable e-commerce platform with separate services for products, orders, and payments.",
-    tags: ["Java", "Spring Cloud", "Docker", "MongoDB"],
-    colors: ["bg-blue-100", "bg-green-100", "bg-red-100", "bg-orange-100"],
+      "Scalable e-commerce backend with separate services in Java and Python for products, orders, and payments.",
+    tags: ["Java", "Spring Cloud", "Python", "MongoDB"],
+    colors: ["bg-blue-100", "bg-green-100", "bg-yellow-100", "bg-red-100"],
     icon: "🛒",
   },
   {
     title: "Authentication Service",
     description:
-      "Secure JWT-based authentication and authorization service with OAuth2 support.",
-    tags: ["Java", "Spring Security", "JWT", "Redis"],
+      "Secure JWT-based authentication service using Java Spring Security and Python-based microservices integration.",
+    tags: ["Java", "Spring Security", "Python", "Redis"],
     colors: ["bg-blue-100", "bg-green-100", "bg-yellow-100", "bg-pink-100"],
     icon: "🔐",
+  },
+  {
+    title: "Data Processing Pipeline",
+    description:
+      "High-throughput data ingestion and transformation pipeline built in Python with microservices architecture in Java.",
+    tags: ["Python", "Java", "Kafka", "PostgreSQL"],
+    colors: ["bg-yellow-100", "bg-blue-100", "bg-purple-100", "bg-green-100"],
+    icon: "⚡",
+  },
+  {
+    title: "Cloud Monitoring Dashboard",
+    description:
+      "Real-time monitoring system for cloud applications using Python scripts and Java Spring Boot backend.",
+    tags: ["Python", "Java", "AWS", "Docker"],
+    colors: ["bg-yellow-100", "bg-blue-100", "bg-gray-100", "bg-purple-100"],
+    icon: "☁️",
   },
 ];
 

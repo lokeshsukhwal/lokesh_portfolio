@@ -41,27 +41,27 @@ export default function About() {
                 <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#7F56D9] to-[#EB3A84]">
                   Lokesh Sukhwal
                 </span>
-                , a full-stack Java Developer with <strong>3+ years</strong> of
-                proven expertise in architecting and deploying enterprise-grade
-                applications. Passionate about building scalable,
-                high-performance systems that solve real-world problems.
+                , a passionate full-stack developer and{" "}
+                <strong>Java & Python expert</strong> with over{" "}
+                <strong>3+ years</strong> of professional experience building
+                robust, scalable, and high-performance software solutions.
               </p>
               <p className="leading-relaxed">
-                My technical foundation spans{" "}
+                I specialize in designing and developing{" "}
                 <strong>
-                  microservices architecture, RESTful APIs, database
-                  optimization, and cloud deployments
+                  backend-heavy systems using Java and Python, microservices
+                  architecture, RESTful APIs, database optimization, and cloud
+                  deployments
                 </strong>
-                . I've delivered solutions that handle 100K+ daily requests and
-                improved system performance by up to 60%. Beyond coding, I'm
-                committed to writing clean, maintainable code and mentoring
-                junior developers.
+                . My work has powered applications handling 100K+ daily requests
+                while significantly improving reliability and system efficiency.
               </p>
               <p className="leading-relaxed">
-                When I'm not debugging, I'm exploring emerging technologies,
-                contributing to open-source projects, and staying updated with
-                industry best practices. Let's build something extraordinary
-                together! 
+                Beyond development, I focus on writing clean, maintainable code,
+                following best practices, and mentoring developers. I enjoy
+                exploring new technologies, contributing to open-source, and
+                continuously improving my craft to deliver impactful solutions.
+                Let’s build something exceptional together!
               </p>
             </div>
             <motion.a
@@ -92,16 +92,16 @@ export default function About() {
               {/* Experience Cards */}
               {[
                 {
-                  role: "Java Developer",
+                  role: "Software Engineer",
                   company: "Helson Software Solution",
                   description:
-                    "Architected and deployed scalable RESTful APIs serving 100K+ daily requests. Implemented CI/CD pipelines reducing deployment time by 60%, and optimized database queries achieving 40% performance improvement across enterprise applications.",
+                    "Developed and maintained scalable backend systems using Java and Python. Designed RESTful APIs serving 100K+ daily requests, implemented CI/CD pipelines reducing deployment time by 60%, and optimized databases to improve overall system performance by 40%.",
                 },
                 {
-                  role: "Software Engineer",
+                  role: "Research Analyst",
                   company: "Arcgate",
                   description:
-                    "Engineered backend microservices handling 50+ concurrent users, reducing response times by 35%. Optimized complex database queries and implemented caching strategies, improving platform throughput by 3x for high-traffic e-commerce operations.",
+                    "Built and optimized backend microservices using Python-based frameworks, supporting 50+ concurrent users. Improved response times by 35% through query optimization and caching strategies, and enhanced platform scalability for high-traffic business use cases.",
                 },
               ].map((experience, index) => (
                 <motion.div

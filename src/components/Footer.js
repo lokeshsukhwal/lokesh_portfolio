@@ -5,19 +5,19 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: <FaLinkedinIn size={18} />,
-      href: "#",
+      href: "https://www.linkedin.com/in/lokesh-sukhwal/",
       bgLight: "from-blue-400 to-blue-600",
       bgDark: "from-blue-500 to-cyan-400",
     },
     {
       icon: <FaGithub size={18} />,
-      href: "#",
+      href: "https://github.com/lokeshsukhwal",
       bgLight: "from-gray-400 to-gray-600",
       bgDark: "from-gray-500 to-gray-300",
     },
     {
       icon: <FaTwitter size={18} />,
-      href: "#",
+      href: "https://x.com/LokeshSukhwal15",
       bgLight: "from-sky-400 to-blue-500",
       bgDark: "from-sky-400 to-blue-500",
     },

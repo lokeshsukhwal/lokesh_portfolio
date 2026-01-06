@@ -1,34 +1,34 @@
 import React from "react";
 import TypingIntro from "./TypingIntro";
 import { motion } from "framer-motion";
-import { FaReact, FaDocker, FaAws } from "react-icons/fa";
+import { FaJava, FaPython, FaDocker, FaAws } from "react-icons/fa";
 import { SiSpring, SiPostgresql } from "react-icons/si";
 
 const logos = [
   {
     id: 1,
     icon: (
-      <FaReact
+      <FaJava
         size={30}
-        className="text-cyan-400 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
+        className="text-red-500 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
       />
     ),
   },
   {
     id: 2,
     icon: (
-      <SiSpring
+      <FaPython
         size={30}
-        className="text-green-400 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
+        className="text-yellow-400 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
       />
     ),
   },
   {
     id: 3,
     icon: (
-      <FaDocker
+      <SiSpring
         size={30}
-        className="text-blue-400 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
+        className="text-green-400 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
       />
     ),
   },
@@ -47,6 +47,15 @@ const logos = [
       <FaAws
         size={30}
         className="text-gray-600 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
+      />
+    ),
+  },
+  {
+    id: 6,
+    icon: (
+      <FaDocker
+        size={30}
+        className="text-blue-400 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
       />
     ),
   },
@@ -82,8 +91,8 @@ const Home = () => {
               I build robust, scalable backend systems and enterprise-grade
               applications that process millions of transactions daily. My
               expertise includes microservices architecture, RESTful APIs, and
-              cloud-native engineering with Java and modern technologies to
-              power business growth.
+              cloud-native engineering using Java, Python, Spring Boot, and
+              modern technologies to power business growth.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start">

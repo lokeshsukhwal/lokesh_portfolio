@@ -234,6 +234,26 @@ const Contact = () => {
                   required
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 transition"
                 ></textarea>
+                <div className="mb-4 sm:mb-6">
+                  <label
+                    htmlFor="attachment"
+                    className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2 font-exo2"
+                  >
+                    Attachment (optional)
+                  </label>
+                  <input
+                    type="file"
+                    id="attachment"
+                    name="attachment"
+                    className="w-full text-sm sm:text-base text-gray-700 dark:text-gray-300
+               file:mr-4 file:py-2 file:px-4
+               file:rounded-lg file:border-0
+               file:text-sm file:font-medium
+               file:bg-blue-600 file:text-white
+               hover:file:bg-blue-700
+               transition"
+                  />
+                </div>
               </div>
 
               {/* Status Messages */}
