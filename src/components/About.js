@@ -41,27 +41,28 @@ export default function About() {
                 <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#7F56D9] to-[#EB3A84]">
                   Lokesh Sukhwal
                 </span>
-                , a passionate full-stack developer and{" "}
-                <strong>Java & Python expert</strong> with over{" "}
-                <strong>3+ years</strong> of professional experience building
-                robust, scalable, and high-performance software solutions.
+                , a full-stack backend developer specializing in{" "}
+                <strong>Java and Python</strong> with
+                <strong> 3+ years</strong> of experience in designing and
+                deploying enterprise-grade applications. I am passionate about
+                building scalable, high-performance systems that power
+                real-world business solutions.
               </p>
               <p className="leading-relaxed">
-                I specialize in designing and developing{" "}
+                My technical expertise spans{" "}
                 <strong>
-                  backend-heavy systems using Java and Python, microservices
-                  architecture, RESTful APIs, database optimization, and cloud
-                  deployments
+                  microservices architecture, RESTful APIs, Python data
+                  pipelines, database optimization, and cloud deployments
                 </strong>
-                . My work has powered applications handling 100K+ daily requests
-                while significantly improving reliability and system efficiency.
+                . I've delivered solutions handling 100K+ daily requests,
+                optimized system performance by up to 60%, and designed
+                maintainable, testable code for enterprise teams.
               </p>
               <p className="leading-relaxed">
-                Beyond development, I focus on writing clean, maintainable code,
-                following best practices, and mentoring developers. I enjoy
-                exploring new technologies, contributing to open-source, and
-                continuously improving my craft to deliver impactful solutions.
-                Let’s build something exceptional together!
+                Beyond coding, I explore emerging backend technologies,
+                contribute to open-source projects, and mentor junior developers
+                to build clean, efficient systems. Let's create impactful
+                solutions together!
               </p>
             </div>
             <motion.a
@@ -89,19 +90,18 @@ export default function About() {
             </h3>
 
             <div className="grid gap-4 sm:gap-6">
-              {/* Experience Cards */}
               {[
                 {
                   role: "Software Engineer",
                   company: "Helson Software Solution",
                   description:
-                    "Developed and maintained scalable backend systems using Java and Python. Designed RESTful APIs serving 100K+ daily requests, implemented CI/CD pipelines reducing deployment time by 60%, and optimized databases to improve overall system performance by 40%.",
+                    "Developed robust RESTful APIs using Java Spring Boot and Python services, handling 100K+ daily requests. Implemented CI/CD pipelines reducing deployment time by 60% and optimized database queries for high-performance enterprise applications.",
                 },
                 {
                   role: "Research Analyst",
                   company: "Arcgate",
                   description:
-                    "Built and optimized backend microservices using Python-based frameworks, supporting 50+ concurrent users. Improved response times by 35% through query optimization and caching strategies, and enhanced platform scalability for high-traffic business use cases.",
+                    "Engineered backend microservices with Java and Python, optimizing data processing and caching strategies. Improved response times by 35% and enhanced platform throughput for high-traffic e-commerce operations.",
                 },
               ].map((experience, index) => (
                 <motion.div
