@@ -5,8 +5,6 @@ import {
   FaPython,
   FaDatabase,
   FaCloud,
-  FaTools,
-  FaCodeBranch,
   FaBrain,
 } from "react-icons/fa";
 import { SiSpring } from "react-icons/si";

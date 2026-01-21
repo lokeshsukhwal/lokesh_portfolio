@@ -15,7 +15,7 @@ const TypingIntro = ({ className }) => {
   const [displayText, setDisplayText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [speed, setSpeed] = useState(100);
+  const speed = 100;
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
