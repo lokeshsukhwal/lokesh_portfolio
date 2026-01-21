@@ -16,14 +16,12 @@ const Contact = () => {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch(
-        "https://formsubmit.co/ajax/techlokesh@yahoo.com",
-        {
-          method: "POST",
-          body: formData,
-          headers: { Accept: "application/json" },
-        }
-      );
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        body: formData,
+        // Do NOT set Content-Type header when sending FormData; 
+        // the browser sets it automatically with the boundary.
+      });
 
       const data = await res.json();
       if (res.ok) {
@@ -36,6 +34,7 @@ const Contact = () => {
       }
     } catch (err) {
       setErrorMessage("Network error. Please try again.");
+      console.error("Error submitting form:", err);
     }
 
     setSending(false);
