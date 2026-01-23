@@ -68,10 +68,17 @@ const Home = () => {
             className="text-center lg:text-left"
           >
             <span className="px-4 py-2 rounded-full glass text-sm font-medium text-primary border border-primary/30">
-              👋 Available for new opportunities
+              <motion.span
+                className="inline-block"
+                animate={{ rotate: [0, 20, -20, 20, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5 }}
+              >
+                👋
+              </motion.span>{" "}
+              Available for new opportunities
             </span>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-exo2 font-bold mb-4 sm:mb-6 animated-gradient">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-exo2 font-bold mb-4 mt-4 sm:mb-6 animated-gradient">
               Hi, I'm <span className="font-orbitron">Lokesh Sukhwal</span>
             </h1>
 

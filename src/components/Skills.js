@@ -201,12 +201,12 @@ export default function Skills() {
       {/* Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden dark:block">
         <motion.div
-          className="absolute top-1/4 -left-20 w-96 h-96 rounded-full blur-3xl bg-gradient-to-br from-sky-500/25 via-indigo-500/15 to-transparent"
+          className="absolute top-1/4 -left-20 w-96 h-96 rounded-full blur-3xl bg-gradient-to-br"
           animate={{ x: [0, 50, 0], y: [0, 30, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-full blur-3xl bg-gradient-to-bl from-pink-500/25 via-purple-500/15 to-transparent"
+          className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-full blur-3xl bg-gradient-to-bl"
           animate={{ x: [0, -50, 0], y: [0, -30, 0], scale: [1, 1.2, 1] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
