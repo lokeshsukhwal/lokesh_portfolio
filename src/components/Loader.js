@@ -13,13 +13,13 @@ const Loader = ({ name = "Lokesh Sukhwal" }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0f1c]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 dark:bg-[#0a0f1c] transition-colors duration-500 overflow-hidden">
       {/* ---------------- Animated Blocks Grid ---------------- */}
       <div className="relative w-48 h-48 grid grid-cols-3 gap-3">
         {[...Array(9)].map((_, i) => (
           <motion.div
             key={i}
-            className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-lg shadow-lg"
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg shadow-lg glass-light dark:glass"
             variants={blockVariants}
             animate="animate"
             transition={{ delay: i * 0.1 }}
@@ -30,7 +30,7 @@ const Loader = ({ name = "Lokesh Sukhwal" }) => {
       {/* ---------------- Central Name ---------------- */}
       <div className="absolute text-center">
         <motion.h1
-          className="flex justify-center text-3xl sm:text-4xl md:text-5xl font-orbitron tracking-wide text-white"
+          className="flex justify-center text-3xl sm:text-4xl md:text-5xl font-orbitron tracking-wide text-gray-900 dark:text-white"
           initial="hidden"
           animate="visible"
           variants={{
@@ -56,9 +56,9 @@ const Loader = ({ name = "Lokesh Sukhwal" }) => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5 }}
-          className="mt-3 text-xs sm:text-sm tracking-widest text-gray-400 font-exo2 uppercase"
+          className="mt-3 text-xs sm:text-sm tracking-widest font-exo2 uppercase text-gray-700 dark:text-gray-300"
         >
-          Architecting Code, Delivering Excellence
+          Crafting Premium Full-Stack Experiences
         </motion.p>
       </div>
     </div>

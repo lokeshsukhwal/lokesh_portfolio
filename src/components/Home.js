@@ -124,25 +124,25 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex items-center justify-center"
           >
-            <div className="w-full max-w-2xl glass rounded-2xl overflow-hidden border border-primary/20">
+            <div className="w-full max-w-2xl glass-light dark:glass rounded-2xl overflow-hidden border border-primary/20 backdrop-blur-lg bg-white/10 dark:bg-[#0a0f1c]/30">
               {/* Header */}
-              <div className="bg-navy-light px-4 py-3 flex items-center gap-2 border-b border-white/10">
+              <div className="bg-white/20 dark:bg-navy-light/40 px-4 py-3 flex items-center gap-2 border-b border-gray-200 dark:border-white/10 backdrop-blur-sm">
                 <div className="flex gap-2">
                   <span className="w-3 h-3 rounded-full bg-red-500" />
                   <span className="w-3 h-3 rounded-full bg-yellow-500" />
                   <span className="w-3 h-3 rounded-full bg-green-500" />
                 </div>
-                <span className="text-sm text-gray-400 ml-4 font-mono">
+                <span className="text-sm text-gray-500 dark:text-gray-400 ml-4 font-mono">
                   fullstack.js
                 </span>
               </div>
 
               {/* Body */}
               <div className="p-6 font-mono text-sm min-h-[320px]">
-                <pre className="text-gray-300 whitespace-pre-wrap leading-relaxed">
+                <pre className="whitespace-pre-wrap leading-relaxed">
                   {displayedCode.split("\n").map((line, idx) => (
                     <div key={idx}>
-                      <span className="text-gray-600 select-none mr-4">
+                      <span className="text-gray-400 dark:text-gray-600 select-none mr-4">
                         {idx + 1}
                       </span>
 
@@ -154,7 +154,7 @@ const Home = () => {
                               ? "text-accent-cyan"
                               : line.includes(":")
                                 ? "text-primary"
-                                : "text-gray-300"
+                                : "text-gray-800 dark:text-gray-300"
                         }
                       >
                         {line}
