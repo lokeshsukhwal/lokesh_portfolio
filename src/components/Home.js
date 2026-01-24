@@ -118,54 +118,61 @@ const Home = () => {
           </motion.div>
 
           {/* ---------------- Right Terminal ---------------- */}
+          {/* ---------------- Right Terminal ---------------- */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex items-center justify-center"
           >
-            <div className="w-full max-w-2xl glass-light dark:glass rounded-2xl overflow-hidden border border-primary/20 backdrop-blur-lg bg-white/10 dark:bg-[#0a0f1c]/30">
-              {/* Header */}
-              <div className="bg-white/20 dark:bg-navy-light/40 px-4 py-3 flex items-center gap-2 border-b border-gray-200 dark:border-white/10 backdrop-blur-sm">
-                <div className="flex gap-2">
-                  <span className="w-3 h-3 rounded-full bg-red-500" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <span className="w-3 h-3 rounded-full bg-green-500" />
+            <div className="w-full max-w-2xl relative rounded-2xl overflow-hidden border border-primary/20">
+              {/* ---------- Glass Background ---------- */}
+              <div className="absolute inset-0 bg-white/10 dark:bg-[#0a0f1c]/40 backdrop-blur-xl rounded-2xl pointer-events-none" />
+
+              {/* ---------- Terminal Content ---------- */}
+              <div className="relative z-10 rounded-2xl overflow-hidden">
+                {/* Terminal Header */}
+                <div className="bg-white/20 dark:bg-[#0a0f1c]/30 px-4 py-3 flex items-center gap-2 border-b border-white/30 dark:border-gray-700 backdrop-blur-sm">
+                  <div className="flex gap-2">
+                    <span className="w-3 h-3 rounded-full bg-red-500" />
+                    <span className="w-3 h-3 rounded-full bg-yellow-500" />
+                    <span className="w-3 h-3 rounded-full bg-green-500" />
+                  </div>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 ml-4 font-mono">
+                    fullstack.js
+                  </span>
                 </div>
-                <span className="text-sm text-gray-500 dark:text-gray-400 ml-4 font-mono">
-                  fullstack.js
-                </span>
-              </div>
 
-              {/* Body */}
-              <div className="p-6 font-mono text-sm min-h-[320px]">
-                <pre className="whitespace-pre-wrap leading-relaxed">
-                  {displayedCode.split("\n").map((line, idx) => (
-                    <div key={idx}>
-                      <span className="text-gray-400 dark:text-gray-600 select-none mr-4">
-                        {idx + 1}
-                      </span>
+                {/* Terminal Body */}
+                <div className="p-6 font-mono text-sm min-h-[320px] relative">
+                  <pre className="whitespace-pre-wrap leading-relaxed text-gray-800 dark:text-gray-300">
+                    {displayedCode.split("\n").map((line, idx) => (
+                      <div key={idx}>
+                        <span className="text-gray-400 dark:text-gray-600 select-none mr-4">
+                          {idx + 1}
+                        </span>
 
-                      <span
-                        className={
-                          line.includes("const") || line.includes("build")
-                            ? "text-secondary"
-                            : line.includes('"')
-                              ? "text-accent-cyan"
-                              : line.includes(":")
-                                ? "text-primary"
-                                : "text-gray-800 dark:text-gray-300"
-                        }
-                      >
-                        {line}
-                      </span>
-                    </div>
-                  ))}
+                        <span
+                          className={
+                            line.includes("const") || line.includes("build")
+                              ? "text-secondary"
+                              : line.includes('"')
+                                ? "text-accent-cyan"
+                                : line.includes(":")
+                                  ? "text-primary"
+                                  : "text-gray-800 dark:text-gray-300"
+                          }
+                        >
+                          {line}
+                        </span>
+                      </div>
+                    ))}
 
-                  {lineIndex < codeLines.length && (
-                    <span className="inline-block w-[2px] h-5 bg-primary ml-1 animate-pulse align-middle" />
-                  )}
-                </pre>
+                    {lineIndex < codeLines.length && (
+                      <span className="inline-block w-[2px] h-5 bg-primary ml-1 animate-pulse align-middle" />
+                    )}
+                  </pre>
+                </div>
               </div>
             </div>
           </motion.div>
