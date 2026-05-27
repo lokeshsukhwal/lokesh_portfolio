@@ -24,6 +24,6 @@ yarn-error.log*
 
 # Backend specific
 backend/node_modules/
-backend/.env
+backend/.env*
 backend/uploads/
 backend/data/

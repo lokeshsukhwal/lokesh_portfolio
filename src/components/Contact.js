@@ -8,6 +8,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setSuccessMessage("");
     setErrorMessage("");
     setSending(true);
@@ -16,36 +17,45 @@ const Contact = () => {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        body: formData,
-        // Do NOT set Content-Type header when sending FormData; 
-        // the browser sets it automatically with the boundary.
-      });
+      const res = await fetch(
+        "https://formsubmit.co/ajax/techlokesh@yahoo.com",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
 
       const data = await res.json();
-      if (res.ok) {
-        setSuccessMessage("Message sent! I will get back to you soon.");
+
+      if (data.success === "true") {
+        setSuccessMessage(
+          "Message sent successfully! I will get back to you soon."
+        );
         form.reset();
       } else {
         setErrorMessage(
-          data.message || "Failed to send message. Please try again later."
+          "Failed to send message. Please try again later."
         );
       }
     } catch (err) {
+      console.error("Error:", err);
       setErrorMessage("Network error. Please try again.");
-      console.error("Error submitting form:", err);
     }
 
     setSending(false);
   };
+
   return (
     <section
       id="contact"
       className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-gray-100 dark:bg-[#0a0f1c] transition-colors duration-500"
     >
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24">
-        {/* Section Heading */}
+
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -55,12 +65,14 @@ const Contact = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 font-orbitron text-gray-800 dark:text-white">
             Get In <span className="gradient-text">Touch</span>
           </h2>
+
           <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto"></div>
         </motion.div>
 
-        {/* Main Grid Layout */}
+        {/* Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 2xl:gap-20 items-start">
-          {/* Left: Contact Info */}
+
+          {/* Left Side */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -70,16 +82,14 @@ const Contact = () => {
             <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 font-exo2 text-gray-800 dark:text-white">
               Let's talk about your project
             </h3>
+
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 font-inter leading-relaxed">
-              Have a project in mind or want to discuss potential opportunities?
-              Feel free to reach out. I'm always open to discussing new
-              projects, creative ideas, or opportunities to be part of your
-              vision.
+              Have a project in mind or want to discuss opportunities?
+              Feel free to reach out anytime.
             </p>
 
-            {/* Contact Methods */}
+            {/* Email */}
             <div className="space-y-4 sm:space-y-6">
-              {/* Email */}
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 className="flex items-start space-x-3 sm:space-x-4"
@@ -87,10 +97,12 @@ const Contact = () => {
                 <div className="flex-shrink-0 bg-blue-100 dark:bg-blue-900 rounded-lg p-2 sm:p-3">
                   <i className="fas fa-envelope text-lg sm:text-xl text-blue-600 dark:text-blue-300"></i>
                 </div>
+
                 <div>
                   <h4 className="text-sm sm:text-base font-medium font-exo2">
                     Email Me
                   </h4>
+
                   <a
                     href="mailto:techlokesh@yahoo.com"
                     className="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:underline font-inter"
@@ -108,10 +120,12 @@ const Contact = () => {
                 <div className="flex-shrink-0 bg-green-100 dark:bg-green-900 rounded-lg p-2 sm:p-3">
                   <i className="fas fa-phone-alt text-lg sm:text-xl text-green-600 dark:text-green-300"></i>
                 </div>
+
                 <div>
                   <h4 className="text-sm sm:text-base font-medium font-exo2">
                     Call Me
                   </h4>
+
                   <a
                     href="tel:+919983580715"
                     className="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:underline font-inter"
@@ -129,10 +143,12 @@ const Contact = () => {
                 <div className="flex-shrink-0 bg-purple-100 dark:bg-purple-900 rounded-lg p-2 sm:p-3">
                   <i className="fas fa-map-marker-alt text-lg sm:text-xl text-purple-600 dark:text-purple-300"></i>
                 </div>
+
                 <div>
                   <h4 className="text-sm sm:text-base font-medium font-exo2">
                     Location
                   </h4>
+
                   <p className="text-gray-600 dark:text-gray-300 font-inter">
                     Hyderabad, Telangana, India
                   </p>
@@ -140,11 +156,12 @@ const Contact = () => {
               </motion.div>
             </div>
 
-            {/* Social Icons */}
+            {/* Socials */}
             <div className="mt-6 sm:mt-8">
               <h4 className="text-sm sm:text-base font-medium mb-3 sm:mb-4 font-exo2">
                 Follow Me
               </h4>
+
               <div className="flex space-x-3 sm:space-x-4">
                 {[
                   {
@@ -178,7 +195,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Right: Contact Form */}
+          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -187,98 +204,132 @@ const Contact = () => {
           >
             <form
               onSubmit={handleSubmit}
+              encType="multipart/form-data"
               className="bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-2xl p-6 sm:p-8 w-full max-w-2xl lg:max-w-none transform transition-transform duration-300 hover:scale-[1.02]"
             >
-              {/* Formsubmit hidden inputs */}
+              {/* Hidden Inputs */}
               <input type="hidden" name="_captcha" value="false" />
               <input
                 type="hidden"
                 name="_subject"
-                value="New contact request from portfolio"
+                value="New Portfolio Contact Message"
               />
-              {/* Form Fields */}
-              {[
-                { label: "Your Name", id: "name", type: "text" },
-                { label: "Email Address", id: "email", type: "email" },
-                { label: "Subject", id: "subject", type: "text" },
-              ].map((field, index) => (
-                <div className="mb-4 sm:mb-6" key={index}>
-                  <label
-                    htmlFor={field.id}
-                    className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2 font-exo2"
-                  >
-                    {field.label}
-                  </label>
-                  <input
-                    type={field.type}
-                    id={field.id}
-                    name={field.id}
-                    required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 transition"
-                  />
-                </div>
-              ))}
+              <input type="hidden" name="_template" value="table" />
 
+              {/* Name */}
+              <div className="mb-4 sm:mb-6">
+                <label
+                  htmlFor="name"
+                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
+                >
+                  Your Name
+                </label>
+
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-900"
+                />
+              </div>
+
+              {/* Email */}
+              <div className="mb-4 sm:mb-6">
+                <label
+                  htmlFor="email"
+                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
+                >
+                  Email Address
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-900"
+                />
+              </div>
+
+              {/* Subject */}
+              <div className="mb-4 sm:mb-6">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
+                >
+                  Subject
+                </label>
+
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-900"
+                />
+              </div>
+
+              {/* Message */}
               <div className="mb-4 sm:mb-6">
                 <label
                   htmlFor="message"
-                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2 font-exo2"
+                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
                 >
                   Your Message
                 </label>
+
                 <textarea
                   id="message"
                   name="message"
                   rows="5"
                   required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-900 transition"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-900"
                 ></textarea>
-                <div className="mb-4 sm:mb-6">
-                  <label
-                    htmlFor="attachment"
-                    className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2 font-exo2"
-                  >
-                    Attachment (optional)
-                  </label>
-                  <input
-                    type="file"
-                    id="attachment"
-                    name="attachment"
-                    className="w-full text-sm sm:text-base text-gray-700 dark:text-gray-300
-               file:mr-4 file:py-2 file:px-4
-               file:rounded-lg file:border-0
-               file:text-sm file:font-medium
-               file:bg-blue-600 file:text-white
-               hover:file:bg-blue-700
-               transition"
-                  />
-                </div>
               </div>
 
-              {/* Status Messages */}
+              {/* Attachment */}
+              <div className="mb-4 sm:mb-6">
+                <label
+                  htmlFor="attachment"
+                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
+                >
+                  Attachment (optional)
+                </label>
+
+                <input
+                  type="file"
+                  id="attachment"
+                  name="attachment"
+                  className="w-full text-sm text-gray-700 dark:text-gray-300
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded-lg file:border-0
+                  file:text-sm file:font-medium
+                  file:bg-blue-600 file:text-white
+                  hover:file:bg-blue-700 transition"
+                />
+              </div>
+
+              {/* Messages */}
               {successMessage && (
-                <div className="mb-4 text-sm sm:text-base text-green-600 font-medium">
+                <div className="mb-4 text-green-600 font-medium">
                   {successMessage}
                 </div>
               )}
+
               {errorMessage && (
-                <div className="mb-4 text-sm sm:text-base text-red-600 font-medium">
+                <div className="mb-4 text-red-600 font-medium">
                   {errorMessage}
                 </div>
               )}
 
+              {/* Submit */}
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors font-inter disabled:opacity-60"
+                className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors disabled:opacity-60"
               >
-                {sending ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    Send Message <i className="fas fa-paper-plane ml-2"></i>
-                  </>
-                )}
+                {sending ? "Sending..." : "Send Message"}
               </button>
             </form>
           </motion.div>
