@@ -17,7 +17,7 @@ const Contact = () => {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch(
+      const response = await fetch(
         "https://formsubmit.co/ajax/techlokesh@yahoo.com",
         {
           method: "POST",
@@ -28,7 +28,7 @@ const Contact = () => {
         }
       );
 
-      const data = await res.json();
+      const data = await response.json();
 
       if (data.success === "true") {
         setSuccessMessage(
@@ -36,12 +36,10 @@ const Contact = () => {
         );
         form.reset();
       } else {
-        setErrorMessage(
-          "Failed to send message. Please try again later."
-        );
+        setErrorMessage("Failed to send message. Please try again.");
       }
-    } catch (err) {
-      console.error("Error:", err);
+    } catch (error) {
+      console.error("Error:", error);
       setErrorMessage("Network error. Please try again.");
     }
 
@@ -55,7 +53,7 @@ const Contact = () => {
     >
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24">
 
-        {/* Heading */}
+        {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +67,7 @@ const Contact = () => {
           <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto"></div>
         </motion.div>
 
-        {/* Grid */}
+        {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 2xl:gap-20 items-start">
 
           {/* Left Side */}
@@ -84,12 +82,16 @@ const Contact = () => {
             </h3>
 
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 font-inter leading-relaxed">
-              Have a project in mind or want to discuss opportunities?
-              Feel free to reach out anytime.
+              Have a project in mind or want to discuss potential opportunities?
+              Feel free to reach out. I'm always open to discussing new
+              projects, creative ideas, or opportunities to be part of your
+              vision.
             </p>
 
-            {/* Email */}
+            {/* Contact Methods */}
             <div className="space-y-4 sm:space-y-6">
+
+              {/* Email */}
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 className="flex items-start space-x-3 sm:space-x-4"
@@ -156,7 +158,7 @@ const Contact = () => {
               </motion.div>
             </div>
 
-            {/* Socials */}
+            {/* Social Icons */}
             <div className="mt-6 sm:mt-8">
               <h4 className="text-sm sm:text-base font-medium mb-3 sm:mb-4 font-exo2">
                 Follow Me
@@ -195,7 +197,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Right Side - Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -301,7 +303,7 @@ const Contact = () => {
                   type="file"
                   id="attachment"
                   name="attachment"
-                  className="w-full text-sm text-gray-700 dark:text-gray-300
+                  className="w-full text-sm sm:text-base text-gray-700 dark:text-gray-300
                   file:mr-4 file:py-2 file:px-4
                   file:rounded-lg file:border-0
                   file:text-sm file:font-medium
@@ -310,7 +312,7 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Messages */}
+              {/* Status Messages */}
               {successMessage && (
                 <div className="mb-4 text-green-600 font-medium">
                   {successMessage}
@@ -323,7 +325,7 @@ const Contact = () => {
                 </div>
               )}
 
-              {/* Submit */}
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={sending}
