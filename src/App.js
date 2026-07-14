@@ -8,6 +8,8 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import CinematicHero from "./components/CinematicHero";
+import CaseStudies from "./components/CaseStudies";
 
 import "./App.css";
 
@@ -30,10 +32,11 @@ function App() {
         <div className="min-h-screen bg-slate-950 text-slate-100 transition-colors duration-300">
           <Navbar />
           <main>
-            <Home />
+            <CinematicHero />
             <About />
             <Skills />
             <Projects />
+            <CaseStudies />
             <Contact />
           </main>
           <Footer />

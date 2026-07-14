@@ -9,9 +9,9 @@ class MockIntersectionObserver {
     this.callback = callback;
   }
 
-  observe() {}
-  unobserve() {}
-  disconnect() {}
+  observe() { }
+  unobserve() { }
+  disconnect() { }
 }
 
 Object.defineProperty(window, 'IntersectionObserver', {
