@@ -68,10 +68,9 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => handleLinkClick(link.name.toLowerCase())}
                 className={`relative text-sm lg:text-base font-medium transition-all duration-300
-                  ${
-                    active === link.name.toLowerCase()
-                      ? "text-[#7F56D9] dark:text-[#EB3A84]"
-                      : "text-gray-700 dark:text-gray-200 hover:text-[#7F56D9] dark:hover:text-[#EB3A84]"
+                  ${active === link.name.toLowerCase()
+                    ? "text-[#7F56D9] dark:text-[#EB3A84]"
+                    : "text-gray-700 dark:text-gray-200 hover:text-[#7F56D9] dark:hover:text-[#EB3A84]"
                   }
                   after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 
                   after:bg-gradient-to-r after:from-[#7F56D9] after:to-[#EB3A84] 
@@ -88,19 +87,17 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               onClick={toggleDarkMode}
               className={`relative w-14 sm:w-16 h-7 sm:h-8 flex items-center rounded-full cursor-pointer transition-all duration-1000 overflow-hidden
-                ${
-                  isDark
-                    ? "bg-gradient-to-r from-indigo-900 via-purple-900 to-gray-900"
-                    : "bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-300"
+                ${isDark
+                  ? "bg-gradient-to-r from-indigo-900 via-purple-900 to-gray-900"
+                  : "bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-300"
                 }`}
             >
               {/* Sun/Moon Circle */}
               <div
-                className={`absolute w-7 h-7 rounded-full top-0.5 flex items-center justify-center transition-all duration-1000 ${
-                  isDark
+                className={`absolute w-7 h-7 rounded-full top-0.5 flex items-center justify-center transition-all duration-1000 ${isDark
                     ? "right-0 bg-gray-200 shadow-[0_0_15px_#fff]"
                     : "left-0 bg-yellow-400 shadow-[0_0_15px_#FFD700] rotate-12"
-                }`}
+                  }`}
               >
                 {isDark ? (
                   <FaMoon className="text-gray-700" />
@@ -158,10 +155,9 @@ const Navbar = () => {
               onClick={() => handleLinkClick(link.name.toLowerCase())}
               whileHover={{ x: 10 }}
               className={`block text-base sm:text-lg font-medium transition-colors duration-300
-                ${
-                  active === link.name.toLowerCase()
-                    ? "text-[#7F56D9] dark:text-[#EB3A84]"
-                    : "text-gray-700 dark:text-gray-200"
+                ${active === link.name.toLowerCase()
+                  ? "text-[#7F56D9] dark:text-[#EB3A84]"
+                  : "text-gray-700 dark:text-gray-200"
                 }`}
             >
               {link.name}
@@ -173,18 +169,16 @@ const Navbar = () => {
             <div
               onClick={toggleDarkMode}
               className={`relative w-16 h-8 flex items-center rounded-full cursor-pointer transition-all duration-1000 overflow-hidden
-                ${
-                  isDark
-                    ? "bg-gradient-to-r from-indigo-900 via-purple-900 to-gray-900"
-                    : "bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-300"
+                ${isDark
+                  ? "bg-gradient-to-r from-indigo-900 via-purple-900 to-gray-900"
+                  : "bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-300"
                 }`}
             >
               <div
-                className={`absolute w-7 h-7 rounded-full top-0.5 flex items-center justify-center transition-all duration-1000 ${
-                  isDark
+                className={`absolute w-7 h-7 rounded-full top-0.5 flex items-center justify-center transition-all duration-1000 ${isDark
                     ? "right-0 bg-gray-200 shadow-[0_0_15px_#fff]"
                     : "left-0 bg-yellow-400 shadow-[0_0_15px_#FFD700] rotate-12"
-                }`}
+                  }`}
               >
                 {isDark ? (
                   <FaMoon className="text-gray-700" />
@@ -213,7 +207,7 @@ const Navbar = () => {
         </div>
       </motion.div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes cloudMove {
           0% {
             transform: translateX(0);

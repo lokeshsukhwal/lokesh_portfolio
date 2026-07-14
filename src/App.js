@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // 1.2 seconds
+    }, 1800);
 
     return () => clearTimeout(timer);
   }, []);
@@ -27,7 +27,7 @@ function App() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <div className="min-h-screen bg-slate-950 text-slate-100 transition-colors duration-300">
           <Navbar />
           <main>
             <Home />

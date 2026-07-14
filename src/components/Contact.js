@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt } from "react-icons/fa";
 
 const Contact = () => {
   const [sending, setSending] = useState(false);
@@ -8,7 +9,6 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setSuccessMessage("");
     setErrorMessage("");
     setSending(true);
@@ -17,29 +17,20 @@ const Contact = () => {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/techlokesh@yahoo.com",
-        {
-          method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      );
-
+      const response = await fetch("https://formsubmit.co/ajax/techlokesh@yahoo.com", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
       const data = await response.json();
 
       if (data.success === "true") {
-        setSuccessMessage(
-          "Message sent successfully! I will get back to you soon."
-        );
+        setSuccessMessage("Message delivered. I’ll be in touch shortly.");
         form.reset();
       } else {
-        setErrorMessage("Failed to send message. Please try again.");
+        setErrorMessage("The form could not be sent. Please try again.");
       }
     } catch (error) {
-      console.error("Error:", error);
       setErrorMessage("Network error. Please try again.");
     }
 
@@ -47,294 +38,60 @@ const Contact = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-gray-100 dark:bg-[#0a0f1c] transition-colors duration-500"
-    >
-      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24">
-
-        {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-12 md:mb-16"
-        >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 font-orbitron text-gray-800 dark:text-white">
-            Get In <span className="gradient-text">Touch</span>
-          </h2>
-
-          <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto"></div>
+    <section id="contact" className="relative overflow-hidden bg-slate-950/95 py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-400">Contact</p>
+          <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">Let’s talk about resilient platforms and ambitious delivery.</h2>
         </motion.div>
 
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 2xl:gap-20 items-start">
-
-          {/* Left Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col justify-center w-full max-w-2xl lg:max-w-none mx-auto"
-          >
-            <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 font-exo2 text-gray-800 dark:text-white">
-              Let's talk about your project
-            </h3>
-
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 font-inter leading-relaxed">
-              Have a project in mind or want to discuss potential opportunities?
-              Feel free to reach out. I'm always open to discussing new
-              projects, creative ideas, or opportunities to be part of your
-              vision.
-            </p>
-
-            {/* Contact Methods */}
-            <div className="space-y-4 sm:space-y-6">
-
-              {/* Email */}
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                className="flex items-start space-x-3 sm:space-x-4"
-              >
-                <div className="flex-shrink-0 bg-blue-100 dark:bg-blue-900 rounded-lg p-2 sm:p-3">
-                  <i className="fas fa-envelope text-lg sm:text-xl text-blue-600 dark:text-blue-300"></i>
-                </div>
-
-                <div>
-                  <h4 className="text-sm sm:text-base font-medium font-exo2">
-                    Email Me
-                  </h4>
-
-                  <a
-                    href="mailto:techlokesh@yahoo.com"
-                    className="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:underline font-inter"
-                  >
-                    techlokesh@yahoo.com
-                  </a>
-                </div>
-              </motion.div>
-
-              {/* Phone */}
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                className="flex items-start space-x-3 sm:space-x-4"
-              >
-                <div className="flex-shrink-0 bg-green-100 dark:bg-green-900 rounded-lg p-2 sm:p-3">
-                  <i className="fas fa-phone-alt text-lg sm:text-xl text-green-600 dark:text-green-300"></i>
-                </div>
-
-                <div>
-                  <h4 className="text-sm sm:text-base font-medium font-exo2">
-                    Call Me
-                  </h4>
-
-                  <a
-                    href="tel:+919983580715"
-                    className="text-sm sm:text-base text-blue-600 dark:text-blue-400 hover:underline font-inter"
-                  >
-                    +91 9983580715
-                  </a>
-                </div>
-              </motion.div>
-
-              {/* Location */}
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                className="flex items-start space-x-3 sm:space-x-4"
-              >
-                <div className="flex-shrink-0 bg-purple-100 dark:bg-purple-900 rounded-lg p-2 sm:p-3">
-                  <i className="fas fa-map-marker-alt text-lg sm:text-xl text-purple-600 dark:text-purple-300"></i>
-                </div>
-
-                <div>
-                  <h4 className="text-sm sm:text-base font-medium font-exo2">
-                    Location
-                  </h4>
-
-                  <p className="text-gray-600 dark:text-gray-300 font-inter">
-                    Hyderabad, Telangana, India
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Social Icons */}
-            <div className="mt-6 sm:mt-8">
-              <h4 className="text-sm sm:text-base font-medium mb-3 sm:mb-4 font-exo2">
-                Follow Me
-              </h4>
-
-              <div className="flex space-x-3 sm:space-x-4">
-                {[
-                  {
-                    href: "https://www.linkedin.com/in/lokesh-sukhwal/",
-                    icon: "fab fa-linkedin-in",
-                    color: "hover:bg-blue-600",
-                  },
-                  {
-                    href: "https://github.com/lokeshsukhwal",
-                    icon: "fab fa-github",
-                    color: "hover:bg-gray-800",
-                  },
-                  {
-                    href: "https://x.com/LokeshSukhwal15",
-                    icon: "fab fa-twitter",
-                    color: "hover:bg-blue-400",
-                  },
-                ].map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    className={`w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center ${social.color} hover:text-white transition-colors`}
-                  >
-                    <i className={social.icon}></i>
-                  </motion.a>
-                ))}
+        <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+            <h3 className="text-2xl font-semibold text-white">Reach out</h3>
+            <p className="mt-4 text-lg leading-8 text-slate-400">I’m interested in roles and partnerships where reliability, automation, and thoughtful engineering matter.</p>
+            <div className="mt-8 space-y-4">
+              <a href="mailto:techlokesh@yahoo.com" className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-slate-300">
+                <FaEnvelope className="text-cyan-300" /> techlokesh@yahoo.com
+              </a>
+              <a href="https://www.linkedin.com/in/lokesh-sukhwal/" target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-slate-300">
+                <FaLinkedin className="text-cyan-300" /> LinkedIn
+              </a>
+              <a href="https://github.com/lokeshsukhwal" target="_blank" rel="noreferrer" className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-slate-300">
+                <FaGithub className="text-cyan-300" /> GitHub
+              </a>
+              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/70 p-4 text-slate-300">
+                <FaMapMarkerAlt className="text-cyan-300" /> Hyderabad, India
               </div>
             </div>
           </motion.div>
 
-          {/* Right Side - Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center lg:justify-end w-full"
-          >
-            <form
-              onSubmit={handleSubmit}
-              encType="multipart/form-data"
-              className="bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-2xl p-6 sm:p-8 w-full max-w-2xl lg:max-w-none transform transition-transform duration-300 hover:scale-[1.02]"
-            >
-              {/* Hidden Inputs */}
-              <input type="hidden" name="_captcha" value="false" />
-              <input
-                type="hidden"
-                name="_subject"
-                value="New Portfolio Contact Message"
-              />
-              <input type="hidden" name="_template" value="table" />
-
-              {/* Name */}
-              <div className="mb-4 sm:mb-6">
-                <label
-                  htmlFor="name"
-                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
-                >
-                  Your Name
-                </label>
-
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-900"
-                />
+          <motion.form initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} onSubmit={handleSubmit} className="rounded-[2rem] border border-cyan-400/20 bg-slate-900/70 p-8 shadow-2xl shadow-cyan-500/10">
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_subject" value="New Portfolio Contact" />
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label className="mb-2 block text-sm text-slate-300" htmlFor="name">Name</label>
+                <input id="name" name="name" required className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-slate-100 outline-none ring-0" />
               </div>
-
-              {/* Email */}
-              <div className="mb-4 sm:mb-6">
-                <label
-                  htmlFor="email"
-                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
-                >
-                  Email Address
-                </label>
-
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-900"
-                />
+              <div>
+                <label className="mb-2 block text-sm text-slate-300" htmlFor="email">Email</label>
+                <input id="email" name="email" type="email" required className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-slate-100 outline-none ring-0" />
               </div>
-
-              {/* Subject */}
-              <div className="mb-4 sm:mb-6">
-                <label
-                  htmlFor="subject"
-                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
-                >
-                  Subject
-                </label>
-
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-900"
-                />
-              </div>
-
-              {/* Message */}
-              <div className="mb-4 sm:mb-6">
-                <label
-                  htmlFor="message"
-                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
-                >
-                  Your Message
-                </label>
-
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-900"
-                ></textarea>
-              </div>
-
-              {/* Attachment */}
-              <div className="mb-4 sm:mb-6">
-                <label
-                  htmlFor="attachment"
-                  className="block text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium mb-2"
-                >
-                  Attachment (optional)
-                </label>
-
-                <input
-                  type="file"
-                  id="attachment"
-                  name="attachment"
-                  className="w-full text-sm sm:text-base text-gray-700 dark:text-gray-300
-                  file:mr-4 file:py-2 file:px-4
-                  file:rounded-lg file:border-0
-                  file:text-sm file:font-medium
-                  file:bg-blue-600 file:text-white
-                  hover:file:bg-blue-700 transition"
-                />
-              </div>
-
-              {/* Status Messages */}
-              {successMessage && (
-                <div className="mb-4 text-green-600 font-medium">
-                  {successMessage}
-                </div>
-              )}
-
-              {errorMessage && (
-                <div className="mb-4 text-red-600 font-medium">
-                  {errorMessage}
-                </div>
-              )}
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={sending}
-                className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors disabled:opacity-60"
-              >
-                {sending ? "Sending..." : "Send Message"}
-              </button>
-            </form>
-          </motion.div>
+            </div>
+            <div className="mt-5">
+              <label className="mb-2 block text-sm text-slate-300" htmlFor="subject">Subject</label>
+              <input id="subject" name="subject" required className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-slate-100 outline-none ring-0" />
+            </div>
+            <div className="mt-5">
+              <label className="mb-2 block text-sm text-slate-300" htmlFor="message">Message</label>
+              <textarea id="message" name="message" rows="5" required className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-slate-100 outline-none ring-0" />
+            </div>
+            {successMessage ? <p className="mt-5 text-sm text-emerald-400">{successMessage}</p> : null}
+            {errorMessage ? <p className="mt-5 text-sm text-rose-400">{errorMessage}</p> : null}
+            <button type="submit" disabled={sending} className="mt-6 inline-flex items-center rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-5 py-3 font-semibold text-slate-950 disabled:opacity-70">
+              {sending ? "Sending..." : "Send message"}
+            </button>
+          </motion.form>
         </div>
       </div>
     </section>

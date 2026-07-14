@@ -1,134 +1,58 @@
 import { motion } from "framer-motion";
-import { FaDownload, FaBriefcase } from "react-icons/fa";
+import { FaDownload, FaCloud, FaDocker, FaRocket, FaShieldAlt } from "react-icons/fa";
+import { SiKubernetes, SiTerraform } from "react-icons/si";
+
+const pillars = [
+  { title: "Infrastructure Automation", icon: <FaRocket /> },
+  { title: "Cloud Engineering", icon: <FaCloud /> },
+  { title: "CI/CD & Delivery", icon: <FaDocker /> },
+  { title: "Reliability & Security", icon: <FaShieldAlt /> },
+];
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-100 dark:bg-[#0a0f1c] transition-colors duration-500"
-    >
-      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24">
-        {/* Title Section */}
-        <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-orbitron text-center mb-8 sm:mb-12 lg:mb-16 text-gray-800 dark:text-white"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          About{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7F56D9] to-[#EB3A84]">
-            Me
-          </span>
-        </motion.h2>
+    <section id="about" className="relative border-y border-white/10 bg-slate-900/70 py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.6 }} className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-400">About me</p>
+          <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">I build systems that are dependable, observable, and easy to scale.</h2>
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-400">I bring a pragmatic DevOps mindset to modern engineering teams: strong automation habits, deep cloud familiarity, and a focus on creating infrastructure that feels calm under pressure.</p>
+        </motion.div>
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 xl:gap-20">
-          {/* Who am I Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white/50 dark:bg-gray-800/30 rounded-2xl p-6 sm:p-8 lg:p-10 backdrop-blur-sm"
-          >
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-exo2 font-bold text-gray-800 dark:text-white mb-4 sm:mb-6">
-              Who am I?
-            </h3>
-            <div className="space-y-4 text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300">
-              <p className="leading-relaxed">
-                I'm{" "}
-                <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#7F56D9] to-[#EB3A84]">
-                  Lokesh Sukhwal
-                </span>
-                , a full-stack backend developer specializing in{" "}
-                <strong>Java and Python</strong> with
-                <strong> 3+ years</strong> of experience in designing and
-                deploying enterprise-grade applications. I am passionate about
-                building scalable, high-performance systems that power
-                real-world business solutions.
-              </p>
-              <p className="leading-relaxed">
-                My technical expertise spans{" "}
-                <strong>
-                  microservices architecture, RESTful APIs, Python data
-                  pipelines, database optimization, and cloud deployments
-                </strong>
-                . I've delivered solutions handling 100K+ daily requests,
-                optimized system performance by up to 60%, and designed
-                maintainable, testable code for enterprise teams.
-              </p>
-              <p className="leading-relaxed">
-                Beyond coding, I explore emerging backend technologies,
-                contribute to open-source projects, and mentor junior developers
-                to build clean, efficient systems. Let's create impactful
-                solutions together!
-              </p>
+        <div className="mt-14 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+            <h3 className="text-2xl font-semibold text-white">Engineering focus</h3>
+            <p className="mt-4 text-lg leading-8 text-slate-400">
+              My work sits at the intersection of automation and reliability. I enjoy translating complex operational needs into clear, maintainable solutions using Kubernetes, Docker, Terraform, Linux, cloud platforms, and CI/CD workflows.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {pillars.map((pillar, index) => (
+                <div key={pillar.title} className="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
+                  <div className="text-cyan-300">{pillar.icon}</div>
+                  <div className="mt-3 font-semibold text-white">{pillar.title}</div>
+                </div>
+              ))}
             </div>
-            <motion.a
-              href={process.env.PUBLIC_URL + "/lokesh_resume.pdf"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-medium text-white bg-gradient-to-r from-[#7F56D9] to-[#EB3A84] rounded-lg shadow-lg hover:shadow-[0_0_20px_#9B4DFF99] transition-all duration-300 hover:scale-105"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaDownload className="text-lg" /> Download CV
-            </motion.a>
+            <a href="/lokesh_resume.pdf" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-5 py-3 font-semibold text-slate-950">
+              <FaDownload /> Download resume
+            </a>
           </motion.div>
 
-          {/* Experience Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6 sm:space-y-8"
-          >
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-exo2 font-bold text-gray-800 dark:text-white">
-              My Experience
-            </h3>
-
-            <div className="grid gap-4 sm:gap-6">
-              {[
-                {
-                  role: "Software Engineer",
-                  company: "Helson Software Solution",
-                  description:
-                    "Developed robust RESTful APIs using Java Spring Boot and Python services, handling 100K+ daily requests. Implemented CI/CD pipelines reducing deployment time by 60% and optimized database queries for high-performance enterprise applications.",
-                },
-                {
-                  role: "Research Analyst",
-                  company: "Arcgate",
-                  description:
-                    "Engineered backend microservices with Java and Python, optimizing data processing and caching strategies. Improved response times by 35% and enhanced platform throughput for high-traffic e-commerce operations.",
-                },
-              ].map((experience, index) => (
-                <motion.div
-                  key={index}
-                  className="group bg-white dark:bg-gray-800 rounded-xl p-5 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div className="flex items-center gap-3 mb-2 sm:mb-3">
-                    <span className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300">
-                      <FaBriefcase className="text-lg sm:text-xl" />
-                    </span>
-                    <h4 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-800 dark:text-white">
-                      {experience.role}
-                    </h4>
-                  </div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                    {experience.company}
-                  </p>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                    {experience.description}
-                  </p>
-                </motion.div>
-              ))}
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="rounded-[2rem] border border-cyan-400/20 bg-slate-950/70 p-8">
+            <h3 className="text-2xl font-semibold text-white">What I bring</h3>
+            <div className="mt-6 space-y-4 text-slate-400">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div className="flex items-center gap-3 text-white"><SiTerraform className="text-cyan-300" /> Infrastructure as Code</div>
+                <p className="mt-2 text-sm leading-7">Treating environments as versioned, repeatable, and reviewable systems.</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div className="flex items-center gap-3 text-white"><SiKubernetes className="text-cyan-300" /> Container platforms</div>
+                <p className="mt-2 text-sm leading-7">Designing deployments that are resilient, observable, and easy to operate.</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div className="flex items-center gap-3 text-white"><FaDocker className="text-cyan-300" /> Delivery automation</div>
+                <p className="mt-2 text-sm leading-7">Connecting code, testing, release, and monitoring into a dependable flow.</p>
+              </div>
             </div>
           </motion.div>
         </div>

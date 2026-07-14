@@ -1,111 +1,48 @@
 import { motion } from "framer-motion";
-
-
-const projects = [
-  {
-    title: "Financial Analytics Platform",
-    description:
-      "A real-time financial data processing system built with Java Spring Boot and Python for analytics pipelines.",
-    tags: ["Java", "Spring Boot", "Python", "PostgreSQL"],
-    colors: ["bg-blue-100", "bg-green-100", "bg-yellow-100", "bg-purple-100"],
-    icon: "📈",
-  },
-  {
-    title: "E-commerce Microservices",
-    description:
-      "Scalable e-commerce backend with separate services in Java and Python for products, orders, and payments.",
-    tags: ["Java", "Spring Cloud", "Python", "MongoDB"],
-    colors: ["bg-blue-100", "bg-green-100", "bg-yellow-100", "bg-red-100"],
-    icon: "🛒",
-  },
-  {
-    title: "Authentication Service",
-    description:
-      "Secure JWT-based authentication service using Java Spring Security and Python-based microservices integration.",
-    tags: ["Java", "Spring Security", "Python", "Redis"],
-    colors: ["bg-blue-100", "bg-green-100", "bg-yellow-100", "bg-pink-100"],
-    icon: "🔐",
-  },
-  {
-    title: "Data Processing Pipeline",
-    description:
-      "High-throughput data ingestion and transformation pipeline built in Python with microservices architecture in Java.",
-    tags: ["Python", "Java", "Kafka", "PostgreSQL"],
-    colors: ["bg-yellow-100", "bg-blue-100", "bg-purple-100", "bg-green-100"],
-    icon: "⚡",
-  },
-  {
-    title: "Cloud Monitoring Dashboard",
-    description:
-      "Real-time monitoring system for cloud applications using Python scripts and Java Spring Boot backend.",
-    tags: ["Python", "Java", "AWS", "Docker"],
-    colors: ["bg-yellow-100", "bg-blue-100", "bg-gray-100", "bg-purple-100"],
-    icon: "☁️",
-  },
-];
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { projects, SectionTitle } from "./PortfolioSections";
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-100 dark:bg-[#0a0f1c] transition-colors duration-500"
-    >
-      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24">
-        <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 sm:mb-12 md:mb-16 text-gray-800 dark:text-white font-orbitron"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          My{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">
-            Projects
-          </span>
-        </motion.h2>
+    <section id="projects" className="relative overflow-hidden bg-slate-900/70 py-24">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionTitle eyebrow="Selected work" title="Case studies shaped by reliability and scale" description="Each project focuses on making operations simpler, releases safer, and systems easier to run in production." />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+        <div className="mt-10 grid gap-8">
           {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="rounded-xl bg-white dark:bg-gray-800 shadow-md hover:shadow-xl p-4 sm:p-6 md:p-8 transition transform hover:-translate-y-2"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.15 }}
-            >
-              <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4">
-                {project.icon}
+            <motion.article key={project.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ delay: index * 0.08 }} className="overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/70 shadow-2xl shadow-cyan-500/10">
+              <div className={`h-2 bg-gradient-to-r ${project.accent}`} />
+              <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">{index + 1}. Platform initiative</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-white">{project.title}</h3>
+                  <p className="mt-4 text-lg leading-8 text-slate-400">{project.summary}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <span key={item} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-300">{item}</span>
+                    ))}
+                  </div>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-4 py-2 font-semibold text-slate-950">Live demo <FaExternalLinkAlt /></a>
+                    <a href="https://github.com/lokeshsukhwal" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-semibold text-slate-100"><FaGithub /> Repository</a>
+                  </div>
+                </div>
+                <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <h4 className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">Key features</h4>
+                      <ul className="mt-3 space-y-2 text-sm text-slate-400">
+                        {project.features.map((feature) => <li key={feature}>• {feature}</li>)}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">Outcome</h4>
+                      <p className="mt-3 text-sm leading-7 text-slate-400">{project.outcome}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-gray-800 dark:text-white font-exo2">
-                {project.title}
-              </h3>
-
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 font-inter leading-relaxed">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
-                {project.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className={`text-xs sm:text-sm font-medium px-2 py-1 rounded ${project.colors[idx]} text-gray-800`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Uncomment and update if needed
-              <div
-                className="flex items-center gap-2 text-sm sm:text-base text-blue-600 dark:text-blue-400 font-medium cursor-pointer hover:text-blue-800 dark:hover:text-blue-500 transition-colors"
-                aria-label="View project details"
-              >
-                <span>View Details</span>
-                <FaGithub className="text-base sm:text-lg" aria-hidden="true" />
-              </div>
-              */}
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>
