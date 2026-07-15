@@ -2,85 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <meta name="theme-color" content="#0B0B0F" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="description" content="Portfolio of Lokesh Sukhwal, a DevOps and Cloud Engineer focused on infrastructure automation, reliable delivery, observability, and platform engineering." />
+    <meta name="author" content="Lokesh Sukhwal" />
+    <meta name="robots" content="index, follow" />
 
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lokesh Sukhwal" />
+    <meta property="og:title" content="Lokesh Sukhwal — DevOps & Cloud Engineer" />
+    <meta property="og:description" content="DevOps and cloud engineering portfolio featuring real repositories, delivery practices, and an interactive release-readiness lab." />
+    <meta property="og:url" content="https://lokeshsukhwal.github.io/lokesh_portfolio/" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Lokesh Sukhwal — DevOps & Cloud Engineer" />
+    <meta name="twitter:description" content="Infrastructure automation, reliable delivery, observability, and platform engineering." />
+
+    <link rel="canonical" href="https://lokeshsukhwal.github.io/lokesh_portfolio/" />
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/brand-mark.svg" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Inter:wght@400;500;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+
     <script>
-      // Tailwind CSS config
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            animation: {
-              bounceSlow: "bounce 2s infinite",
-            },
-            keyframes: {
-              bounce: {
-                "0%, 20%, 50%, 80%, 100%": { transform: "translateY(0)" },
-                "40%": { transform: "translateY(-20px)" },
-                "60%": { transform: "translateY(-10px)" },
-              },
-            },
-            animation: {
-              "spin-slow": "spin 6s linear infinite",
-            },
-            keyframes: {
-              "gradient-rotate": {
-                "0%": { backgroundPosition: "0% 50%" },
-                "50%": { backgroundPosition: "100% 50%" },
-                "100%": { backgroundPosition: "0% 50%" },
-              },
-            },
-            backgroundSize: {
-              400: "400% 400%",
-            },
-          },
-        },
-      };
-
-      // Menu toggle
-      const menuBtn = document.getElementById("menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      if (menuBtn) {
-        menuBtn.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-        });
-      }
-
-      // Dark mode toggle
-      const toggle = document.getElementById("toggle");
-      const toggleMobile = document.getElementById("toggle-mobile");
-      const html = document.documentElement;
-
-      // Check for saved user preference or use system preference
-      if (
-        localStorage.getItem("darkMode") === "true" ||
-        (!localStorage.getItem("darkMode") &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        html.classList.add("dark");
-        if (toggle) toggle.checked = true;
-        if (toggleMobile) toggleMobile.checked = true;
-      }
+      (function () {
+        try {
+          var saved = localStorage.getItem("portfolio-theme");
+          var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.classList.toggle("dark", theme === "dark");
+        } catch (error) {
+          document.documentElement.dataset.theme = "dark";
+          document.documentElement.classList.add("dark");
+        }
+      })();
     </script>
 
-    <title>Lokesh Sukhwal | Portfolio</title>
+    <title>Lokesh Sukhwal — DevOps & Cloud Engineer</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>This portfolio requires JavaScript to display its interactive project and release-readiness content.</noscript>
     <div id="root"></div>
   </body>
 </html>

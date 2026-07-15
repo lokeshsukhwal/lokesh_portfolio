@@ -1,68 +1,44 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-const Loader = ({ name = "Lokesh Sukhwal" }) => {
-  const letters = name.split("");
+const checks = ["interface", "projects", "contact"];
 
-  // Blocks animation variants
-  const blockVariants = {
-    animate: {
-      y: [0, -20, 0],
-      transition: { duration: 0.8, repeat: Infinity, repeatType: "mirror" },
-    },
-  };
+export default function Loader() {
+  const reduceMotion = useReducedMotion();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-50 dark:bg-[#0a0f1c] transition-colors duration-500 overflow-hidden">
-      {/* ---------------- Animated Blocks Grid ---------------- */}
-      <div className="relative w-48 h-48 grid grid-cols-3 gap-3">
-        {[...Array(9)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg shadow-lg glass-light dark:glass"
-            variants={blockVariants}
-            animate="animate"
-            transition={{ delay: i * 0.1 }}
-          />
-        ))}
-      </div>
+    <motion.div
+      role="status"
+      aria-live="polite"
+      aria-label="Loading Lokesh Sukhwal's portfolio"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: reduceMotion ? 0 : .28 } }}
+      className="portfolio-loader fixed inset-0 z-[100] grid place-items-center overflow-hidden"
+    >
+      <div aria-hidden="true" className="loader-grid absolute inset-0" />
+      <motion.div initial={reduceMotion ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .35 }} className="relative w-[min(88vw,24rem)]">
+        <div className="flex items-center justify-between border-b border-white/[.09] pb-4">
+          <div className="flex items-center gap-3">
+            <span className="grid h-10 w-10 place-items-center rounded-xl border border-blue-200/25 bg-blue-300/[.07] font-mono text-xs font-bold text-blue-200">LS</span>
+            <div><p className="font-exo2 text-lg font-bold text-white">Lokesh<span className="text-orange-300">.</span></p><p className="font-mono text-[9px] uppercase tracking-[.2em] text-slate-600">DevOps &amp; Cloud Engineer</p></div>
+          </div>
+          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,.55)]" />
+        </div>
 
-      {/* ---------------- Central Name ---------------- */}
-      <div className="absolute text-center">
-        <motion.h1
-          className="flex justify-center text-3xl sm:text-4xl md:text-5xl font-orbitron tracking-wide text-gray-900 dark:text-white"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: { transition: { staggerChildren: 0.05 } },
-          }}
-        >
-          {letters.map((char, i) => (
-            <motion.span
-              key={i}
-              variants={{
-                hidden: { opacity: 0, y: 10 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
-        </motion.h1>
+        <div className="mt-5 font-mono text-xs">
+          <p className="text-blue-300"><span className="text-slate-600">$</span> initialize portfolio</p>
+          <div className="mt-4 space-y-2.5">
+            {checks.map((check, index) => (
+              <motion.div key={check} initial={reduceMotion ? false : { opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .12 + index * .1 }} className="flex items-center justify-between text-slate-400"><span>checking {check}</span><span className="text-emerald-400">ready</span></motion.div>
+            ))}
+          </div>
+        </div>
 
-        {/* ---------------- Tagline ---------------- */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.5 }}
-          className="mt-3 text-xs sm:text-sm tracking-widest font-exo2 uppercase text-gray-700 dark:text-gray-300"
-        >
-          Crafting Premium Full-Stack Experiences
-        </motion.p>
-      </div>
-    </div>
+        <div className="mt-6 h-1 overflow-hidden rounded-full bg-white/[.06]">
+          <motion.div initial={{ width: reduceMotion ? "100%" : "0%" }} animate={{ width: "100%" }} transition={{ duration: reduceMotion ? 0 : .72, ease: "easeOut" }} className="h-full rounded-full bg-blue-400" />
+        </div>
+        <div className="mt-3 flex justify-between font-mono text-[9px] uppercase tracking-[.16em] text-slate-600"><span>System check</span><span>Ready</span></div>
+      </motion.div>
+      <span className="sr-only">Portfolio ready</span>
+    </motion.div>
   );
-};
-
-export default Loader;
+}

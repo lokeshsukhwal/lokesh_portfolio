@@ -1,28 +1,43 @@
-import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { useEffect, useState } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { Sun, Moon } from "lucide-react";
 
-const ThemeToggle = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+export default function ThemeToggle() {
+  const [theme, setTheme] = useState(() => localStorage.getItem("portfolio-theme") || "dark");
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("portfolio-theme", theme);
+  }, [theme]);
+
+  const isLight = theme === "light";
 
   return (
     <motion.button
-      onClick={toggleTheme}
-      className="w-14 h-8 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 relative"
-      whileTap={{ scale: 0.9 }}
+      type="button"
+      onClick={() => setTheme(isLight ? "dark" : "light")}
+      aria-label={`Switch to ${isLight ? "dark" : "light"} mode`}
+      aria-pressed={isLight}
+      title={`Switch to ${isLight ? "dark" : "light"} mode`}
+      whileTap={{ scale: 0.94 }}
+      className="theme-toggle relative inline-flex h-10 w-20 items-center rounded-full p-1"
     >
-      <motion.div
-        className={`absolute left-1 top-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow ${
-          theme === "dark" ? "translate-x-6" : ""
-        }`}
-        layout
-        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      <span className="theme-cloud theme-cloud-one" />
+      <span className="theme-cloud theme-cloud-two" />
+      <span className="theme-star theme-star-one" />
+      <span className="theme-star theme-star-two" />
+      <span className="theme-sun absolute left-2 text-xs"><FaSun /></span>
+      <span className="theme-moon absolute right-2 text-xs"><FaMoon /></span>
+      <motion.span
+        key={theme}
+        initial={{ x: isLight ? 40 : 0, y: 0, rotate: isLight ? 18 : 0 }}
+        animate={{ x: isLight ? 0 : 40, y: [0, -7, 0], rotate: isLight ? 0 : 18 }}
+        transition={{ x: { type: "spring", stiffness: 450, damping: 28 }, y: { duration: .42, ease: "easeOut" }, rotate: { duration: .35 } }}
+        className="theme-toggle-thumb relative z-10 grid h-8 w-8 place-items-center rounded-full"
       >
-        {theme === "dark" ? <Moon size={16} /> : <Sun size={16} />}
-      </motion.div>
+        {isLight ? <FaSun className="theme-toggle-thumb-sun" /> : <FaMoon className="theme-toggle-thumb-moon" />}
+      </motion.span>
     </motion.button>
   );
-};
-
-export default ThemeToggle;
+}

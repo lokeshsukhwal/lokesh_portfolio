@@ -1,77 +1,113 @@
-# Lokesh's Portfolio
+# Lokesh Sukhwal — DevOps & Cloud Engineer Portfolio
 
-A modern, responsive portfolio website built with React, showcasing my professional work and skills.
+A responsive, accessible portfolio focused on infrastructure automation, reliable delivery, observability, and platform engineering. The site presents verifiable public work, an honest project roadmap, and an interactive release-readiness simulator.
 
-## 🚀 Live Demo
+## Live site
 
-Visit my portfolio at: [https://lokeshsukhwal.github.io/lokesh_portfolio/](https://lokeshsukhwal.github.io/lokesh_portfolio/)
+[lokeshsukhwal.github.io/lokesh_portfolio](https://lokeshsukhwal.github.io/lokesh_portfolio/)
 
-## 🛠️ Technologies Used
+## Highlights
 
-- React.js
-- HTML5/CSS3
-- Tailwind CSS 
-- JavaScript (ES6+)
+- Capability-based DevOps skills rather than arbitrary proficiency scores
+- Project-specific repository links and explicit project status
+- Interactive release-gate simulator with deterministic decisions
+- Keyboard-friendly navigation and accessible form feedback
+- Responsive dark and light themes
+- Lazy-loaded interactive content
+- Reduced-motion support
+
+## Stack
+
+- React 19
+- Tailwind CSS utilities
+- Framer Motion
+- React Icons
 - Create React App
 - GitHub Pages
 
-## ⚙️ Setup and Installation
-
-1. Clone the repository:
+## Run locally
 
 ```bash
 git clone https://github.com/lokeshsukhwal/lokesh_portfolio.git
-```
-
-2. Install dependencies:
-
-```bash
 cd lokesh_portfolio
 npm install
-```
-
-3. Start the development server:
-
-```bash
 npm start
 ```
 
-The application will open at [http://localhost:3000](http://localhost:3000)
+The development server runs at `http://localhost:3000`.
 
-## 📦 Building for Production
-
-To create a production build:
+## Quality checks
 
 ```bash
+npm test -- --watch=false
 npm run build
 ```
 
-This creates an optimized build in the `build` folder, ready for deployment.
-
-## 🧪 Testing
-
-Run tests with:
+## Deploy
 
 ```bash
-npm test
+npm run deploy
 ```
 
-## 📝 Available Scripts
+The deploy command creates an optimized production build and publishes the `build` directory to GitHub Pages.
 
-- `npm start` - Runs development server
-- `npm test` - Executes test suite
-- `npm run build` - Creates production build
-- `npm run eject` - Ejects CRA configuration (one-way operation)
+## Contact storage with Supabase
 
-## 📚 Additional Resources
+Contact messages are stored privately in Supabase PostgreSQL through an Edge Function. The browser never receives the service-role key and cannot read the submissions table.
 
-- [React Documentation](https://reactjs.org/)
-- [Create React App Documentation](https://create-react-app.dev/)
+1. Create a Supabase project and install the [Supabase CLI](https://supabase.com/docs/guides/cli).
+2. Copy the frontend environment template:
 
-## 📄 License
+```bash
+cp .env.example .env.local
+```
 
-This project is open source and available under the [MIT License](LICENSE).
+3. Add your project URL and public anon key to `.env.local`.
+4. Authenticate, link the repository, and push the database migration:
 
----
+```bash
+supabase login
+supabase link --project-ref YOUR_PROJECT_REF
+supabase db push
+```
 
-Built with ❤️ by Lokesh Sukhwal
+5. Generate a long random rate-limit salt and deploy the function:
+
+```bash
+supabase secrets set RATE_LIMIT_SALT="YOUR_LONG_RANDOM_VALUE"
+supabase secrets set ALLOWED_ORIGINS="https://lokeshsukhwal.github.io,http://localhost:3000"
+supabase functions deploy contact-submit --no-verify-jwt
+```
+
+6. Restart the React development server after changing environment variables.
+
+Submissions appear in Supabase under **Table Editor → contact_messages**. The `status` field supports `new`, `reviewed`, `replied`, `archived`, and `spam`.
+
+Security controls included in the repository:
+
+- Private tables with Row Level Security and no anonymous policies
+- Server-only service-role access
+- Server-side length and email validation
+- Origin allowlist
+- Honeypot filtering
+- Hashed-IP rate limiting: five attempts per ten minutes
+- Atomic database function to prevent concurrent rate-limit bypass
+
+## Project structure
+
+```text
+src/components/
+├── InteractiveResume.js  # Hero and positioning
+├── About.js              # Engineering mindset
+├── Skills.js             # Capability-oriented toolchain
+├── Projects.js           # Shipped work and roadmap
+├── Playground.js         # Release-readiness simulator
+├── Contact.js            # Recruiter contact flow
+└── ...                   # Navigation and shared UI
+```
+
+Supabase resources are under `supabase/migrations` and `supabase/functions`.
+
+## Accuracy policy
+
+Completed work, planned work, and simulated interactions are labeled separately. Performance numbers or production claims are not presented without inspectable evidence.

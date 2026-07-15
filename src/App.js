@@ -1,49 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
+import { AnimatePresence } from "framer-motion";
 import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import CinematicHero from "./components/CinematicHero";
-import CaseStudies from "./components/CaseStudies";
-
-import "./App.css";
+import InteractiveResume from "./components/InteractiveResume";
+const Playground = lazy(() => import('./components/Playground'));
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!loading) return undefined;
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1800);
+    }, 820);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [loading]);
 
   return (
-    <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="min-h-screen bg-slate-950 text-slate-100 transition-colors duration-300">
-          <Navbar />
-          <main>
-            <CinematicHero />
-            <About />
-            <Skills />
-            <Projects />
-            <CaseStudies />
-            <Contact />
-          </main>
-          <Footer />
-          <ScrollToTop />
-        </div>
-      )}
-    </>
+    <div className="app-shell min-h-screen bg-[#0b0b0f] text-slate-100 transition-colors duration-300" aria-busy={loading}>
+      <AnimatePresence>{loading && <Loader />}</AnimatePresence>
+      <a className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#0E1218]/90 focus:text-slate-100 focus:px-3 focus:py-2 rounded-md" href="#main">Skip to content</a>
+      <Navbar />
+      <main id="main">
+        <InteractiveResume />
+        <About />
+        <Skills />
+        <Projects />
+        <Suspense fallback={<div className="py-16"><div className="max-w-4xl mx-auto px-6">Loading playground…</div></div>}>
+          <Playground />
+        </Suspense>
+        <Contact />
+      </main>
+      <Footer />
+      <ScrollToTop />
+    </div>
   );
 }
 
