@@ -2,6 +2,17 @@
 
 A responsive, accessible portfolio focused on infrastructure automation, reliable delivery, observability, and platform engineering. The site presents verifiable public work, an honest project roadmap, and an interactive release-readiness simulator.
 
+## Engineering Field Notes
+
+Original notes and learning resources live in the repository so every article has a reviewable history and a stable source:
+
+- [Secure Supabase contact pipeline](content/notes/secure-supabase-contact-pipeline.md)
+- [GitHub Pages 404 deployment runbook](content/notes/github-pages-404-runbook.md)
+- [DevOps incident troubleshooting method](content/notes/devops-incident-troubleshooting.md)
+- [DevOps and cloud learning path](content/resources/devops-cloud-learning-path.md)
+
+Each note is written around a problem, system diagram, practical commands or examples, failure diagnosis, verification, and reusable lessons. Commands should be tested in an appropriate non-production environment before use.
+
 ## Live site
 
 [lokeshsukhwal.github.io/lokesh_portfolio](https://lokeshsukhwal.github.io/lokesh_portfolio/)
@@ -55,7 +66,7 @@ The deploy command creates an optimized production build and publishes the `buil
 
 Contact messages are stored privately in Supabase PostgreSQL through an Edge Function. The browser never receives the service-role key and cannot read the submissions table.
 
-1. Create a Supabase project and install the [Supabase CLI](https://supabase.com/docs/guides/cli).
+1. Create a Supabase project. The Supabase CLI is installed as a development dependency in this repository and should be run with `npx`.
 2. Copy the frontend environment template:
 
 ```bash
@@ -66,18 +77,31 @@ cp .env.example .env.local
 4. Authenticate, link the repository, and push the database migration:
 
 ```bash
-supabase login
-supabase link --project-ref YOUR_PROJECT_REF
-supabase db push
+npx supabase login
+npx supabase link --project-ref YOUR_PROJECT_REF
+npx supabase db push
 ```
+
+Replace `YOUR_PROJECT_REF` with the first part of your project URL. For example, if the URL is `https://abcdefgh.supabase.co`, the project reference is `abcdefgh`. Do not type the placeholder literally.
 
 5. Generate a long random rate-limit salt and deploy the function:
 
 ```bash
-supabase secrets set RATE_LIMIT_SALT="YOUR_LONG_RANDOM_VALUE"
-supabase secrets set ALLOWED_ORIGINS="https://lokeshsukhwal.github.io,http://localhost:3000"
-supabase functions deploy contact-submit --no-verify-jwt
+npx supabase secrets set RATE_LIMIT_SALT="YOUR_LONG_RANDOM_VALUE"
+npx supabase secrets set ALLOWED_ORIGINS="https://lokeshsukhwal.github.io,http://localhost:3000"
+npx supabase functions deploy contact-submit --no-verify-jwt
 ```
+
+Replace `YOUR_LONG_RANDOM_VALUE` with a private random value and never commit it. One option is `openssl rand -hex 32`.
+
+If interactive login is unavailable, create a personal access token in the Supabase dashboard and set it only in your terminal session:
+
+```bash
+export SUPABASE_ACCESS_TOKEN="YOUR_PERSONAL_ACCESS_TOKEN"
+npx supabase projects list
+```
+
+Never put `SUPABASE_ACCESS_TOKEN`, `SUPABASE_SERVICE_ROLE_KEY`, or `RATE_LIMIT_SALT` in a React `.env` variable or commit them to Git.
 
 6. Restart the React development server after changing environment variables.
 

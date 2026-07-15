@@ -4,7 +4,9 @@ import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Skills from "./components/Skills";
+import Experience from "./components/Experience";
 import Projects from "./components/Projects";
+import FieldNotes from "./components/FieldNotes";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -32,7 +34,9 @@ function App() {
         <InteractiveResume />
         <About />
         <Skills />
+        <Experience />
         <Projects />
+        <FieldNotes />
         <Suspense fallback={<div className="py-16"><div className="max-w-4xl mx-auto px-6">Loading playground…</div></div>}>
           <Playground />
         </Suspense>

@@ -3,7 +3,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState(() => localStorage.getItem("portfolio-theme") || "dark");
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || "dark");
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
