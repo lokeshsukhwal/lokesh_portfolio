@@ -9,6 +9,8 @@ Original notes and learning resources live in the repository so every article ha
 - [Secure Supabase contact pipeline](content/notes/secure-supabase-contact-pipeline.md)
 - [GitHub Pages 404 deployment runbook](content/notes/github-pages-404-runbook.md)
 - [DevOps incident troubleshooting method](content/notes/devops-incident-troubleshooting.md)
+- [Production-minded AWS platform design review](content/articles/aws-platform-design-review.md)
+- [Secure software supply chain threat model](content/articles/secure-software-supply-chain.md)
 - [DevOps and cloud learning path](content/resources/devops-cloud-learning-path.md)
 
 Each note is written around a problem, system diagram, practical commands or examples, failure diagnosis, verification, and reusable lessons. Commands should be tested in an appropriate non-production environment before use.

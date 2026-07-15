@@ -36,17 +36,44 @@ const notes = [
     steps: ["Define impact, timeline, and the most recent change", "Follow DNS, network, runtime, and dependency boundaries", "Test one falsifiable hypothesis at a time", "Mitigate, verify externally, and record preventive actions"],
     source: "https://github.com/lokeshsukhwal/lokesh_portfolio/blob/main/content/notes/devops-incident-troubleshooting.md",
   },
+  {
+    type: "Architecture study",
+    title: "Production-minded AWS platform design review",
+    summary: "An honest, recruiter-ready design exercise covering EKS trade-offs, OIDC, GitOps, SLOs, failure modes, cost, and required implementation evidence.",
+    meta: "AWS · EKS · Terraform · GitOps · SRE",
+    readTime: "11 min",
+    verified: "July 2026",
+    lesson: "Architecture credibility comes from explicit goals, rejected alternatives, trust boundaries, failure exercises, cost analysis, and proof requirements—not from placing many cloud logos in a diagram.",
+    steps: ["Define measurable reliability, delivery, security, and cost goals", "Record EKS versus simpler-service trade-offs", "Design identity, artifact, network, and observability boundaries", "Specify the evidence required before claiming implementation"],
+    source: "https://github.com/lokeshsukhwal/lokesh_portfolio/blob/main/content/articles/aws-platform-design-review.md",
+  },
+  {
+    type: "Security study",
+    title: "Secure software supply chain threat model",
+    summary: "A control and verification plan connecting reviewed source to build identity, SBOM, signed artifact, admission policy, and observed runtime digest.",
+    meta: "OIDC · SBOM · Signing · Provenance · Policy",
+    readTime: "10 min",
+    verified: "July 2026",
+    lesson: "Supply-chain security is a verifiable evidence chain from reviewed commit to deployed digest. Tool count is irrelevant when identity, provenance, policy decisions, and failure tests cannot be demonstrated.",
+    steps: ["Map threats at every delivery trust boundary", "Use short-lived identity and immutable artifact digests", "Verify signature and provenance before admission", "Exercise rejection, compromise, and recovery paths"],
+    source: "https://github.com/lokeshsukhwal/lokesh_portfolio/blob/main/content/articles/secure-software-supply-chain.md",
+  },
 ];
 
 const resources = [
-  { label: "Beginner-to-pro learning path", description: "A staged roadmap with projects, proof requirements, and primary learning resources.", href: "https://github.com/lokeshsukhwal/lokesh_portfolio/blob/main/content/resources/devops-cloud-learning-path.md" },
-  { label: "Supabase Edge Functions", description: "Runtime, deployment, secrets, and browser invocation guidance.", href: "https://supabase.com/docs/guides/functions" },
-  { label: "Supabase CORS guide", description: "Handling browser preflight requests for Edge Functions.", href: "https://supabase.com/docs/guides/functions/cors" },
-  { label: "GitHub Pages publishing", description: "Official branch and workflow publishing-source configuration.", href: "https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" },
-  { label: "React learning guide", description: "Official guidance for reusable component logic and Hooks.", href: "https://react.dev/learn/reusing-logic-with-custom-hooks" },
+  { type: "Original roadmap", label: "Beginner-to-production learning path", description: "A staged roadmap with projects, proof requirements, and primary sources from Linux through SRE.", href: "https://github.com/lokeshsukhwal/lokesh_portfolio/blob/main/content/resources/devops-cloud-learning-path.md" },
+  { type: "Free ebook", label: "Google SRE books", description: "Three official books on reliability, practical SRE, and building secure, reliable systems—free to read online.", href: "https://sre.google/books/" },
+  { type: "Official PDF", label: "AWS Well-Architected Framework", description: "Architecture review guidance across operational excellence, security, reliability, performance, cost, and sustainability.", href: "https://pages.awscloud.com/rs/112-TZM-766/images/AWS_Well-Architected_Framework.pdf" },
+  { type: "Official PDF", label: "CNCF Cloud Native Survey 2025", description: "Current adoption and organizational findings for cloud native platforms and practices.", href: "https://www.cncf.io/wp-content/uploads/2026/01/CNCF_Annual_Survey_Report_final.pdf" },
+  { type: "Research report", label: "DORA 2025 report", description: "Evidence about AI-assisted delivery, organizational systems, and software delivery performance.", href: "https://dora.dev/research/2025/dora-report/" },
+  { type: "Maturity model", label: "CNCF Platform Engineering", description: "A people, process, policy, technology, and outcomes model—not merely a tool checklist.", href: "https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/" },
+  { type: "Reference repo", label: "Kubernetes examples", description: "Official example workloads for learning core Kubernetes objects and behavior.", href: "https://github.com/kubernetes/examples" },
+  { type: "Reference repo", label: "Google microservices demo", description: "A realistic cloud-native sample used for deployment, observability, and failure experiments.", href: "https://github.com/GoogleCloudPlatform/microservices-demo" },
+  { type: "Reference repo", label: "AWS Security Reference Architecture", description: "AWS-maintained examples supporting security architecture and organizational controls.", href: "https://github.com/aws-samples/aws-security-reference-architecture-examples" },
+  { type: "Interactive lab", label: "Killercoda scenarios", description: "Browser-based Linux, Kubernetes, containers, and cloud-native practice environments.", href: "https://killercoda.com/" },
 ];
 
-const filters = ["All", "Lab note", "Deployment note", "Engineering note"];
+const filters = ["All", "Lab note", "Deployment note", "Engineering note", "Architecture study", "Security study"];
 
 export default function FieldNotes() {
   const [filter, setFilter] = useState("All");
@@ -103,7 +130,7 @@ export default function FieldNotes() {
         <div className="notes-resources mt-12 rounded-[1.75rem] p-6 sm:p-8">
           <div className="flex items-start gap-4"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-orange-300/20 bg-orange-300/[.07] text-orange-300"><FaLayerGroup /></span><div><p className="text-xs font-bold uppercase tracking-[.22em] text-orange-300">Resource shelf</p><h3 className="mt-2 text-2xl font-semibold text-white">Start with the roadmap, then learn from primary sources</h3></div></div>
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
-            {resources.map((resource) => <a key={resource.href} href={resource.href} target="_blank" rel="noreferrer" className="notes-resource group rounded-2xl border border-white/[.08] p-5"><span className="flex items-center justify-between gap-3 font-semibold text-slate-200">{resource.label}<FaExternalLinkAlt className="text-xs text-slate-600 transition group-hover:text-blue-300" /></span><span className="mt-2 block text-sm leading-6 text-slate-400">{resource.description}</span></a>)}
+            {resources.map((resource) => <a key={resource.href} href={resource.href} target="_blank" rel="noreferrer" className="notes-resource group rounded-2xl border border-white/[.08] p-5"><span className="text-[9px] font-bold uppercase tracking-[.18em] text-orange-300">{resource.type}</span><span className="mt-2 flex items-center justify-between gap-3 font-semibold text-slate-200">{resource.label}<FaExternalLinkAlt className="text-xs text-slate-600 transition group-hover:text-blue-300" /></span><span className="mt-2 block text-sm leading-6 text-slate-400">{resource.description}</span></a>)}
           </div>
         </div>
       </div>

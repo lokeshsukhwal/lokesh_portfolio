@@ -154,3 +154,29 @@ Your portfolio should show:
 
 Certificates can support learning, but repositories, diagrams, runbooks, pipeline runs, dashboards, and postmortems demonstrate applied capability.
 
+## High-value reading and practice library
+
+These links are intentionally limited to legal, official, or project-maintained material. Downloaded commercial ebooks and unattributed note collections are excluded.
+
+| Format | Resource | Why it matters |
+|---|---|---|
+| Free official books | [Google SRE books](https://sre.google/books/) | Reliability principles, implementation exercises, and secure-system design |
+| Official PDF | [AWS Well-Architected Framework](https://pages.awscloud.com/rs/112-TZM-766/images/AWS_Well-Architected_Framework.pdf) | Structured architecture and risk reviews |
+| Official report | [DORA 2025](https://dora.dev/research/2025/dora-report/) | Current research on AI-assisted delivery and organizational performance |
+| Official PDF | [CNCF Annual Survey 2025](https://www.cncf.io/wp-content/uploads/2026/01/CNCF_Annual_Survey_Report_final.pdf) | Current cloud-native adoption and platform findings |
+| Maturity model | [CNCF Platform Engineering](https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/) | Balances people, process, policy, technology, and outcomes |
+| Reference repository | [Kubernetes examples](https://github.com/kubernetes/examples) | Small official examples for core Kubernetes concepts |
+| Reference repository | [Google microservices demo](https://github.com/GoogleCloudPlatform/microservices-demo) | A realistic system for deployment and observability exercises |
+| Reference repository | [AWS Security Reference Architecture](https://github.com/aws-samples/aws-security-reference-architecture-examples) | Security architecture examples maintained in the AWS samples organization |
+| Interactive labs | [Killercoda](https://killercoda.com/) | Disposable environments for Linux, containers, and Kubernetes practice |
+
+### How to turn reading into recruiter-visible proof
+
+For every major resource, produce one artifact:
+
+```text
+chapter/report -> one-page summary -> small implementation
+-> failure exercise -> evidence screenshot/log -> lesson and trade-off
+```
+
+Do not upload copied book pages or somebody else's handwritten notes. Create your own diagrams, summaries, lab records, and conclusions, and link back to the source.
