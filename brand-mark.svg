@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">Lokesh Sukhwal</title>
+  <desc id="description">LS monogram for Lokesh Sukhwal</desc>
+  <rect width="512" height="512" rx="112" fill="#0b0b0f"/>
+  <rect x="18" y="18" width="476" height="476" rx="98" fill="none" stroke="#7c9cff" stroke-width="18"/>
+  <text x="256" y="302" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="172" font-weight="700" fill="#e6e8eb">LS</text>
+  <circle cx="405" cy="397" r="24" fill="#ff9a7a"/>
+</svg>

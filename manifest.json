@@ -1,0 +1,17 @@
+{
+  "short_name": "Lokesh",
+  "name": "Lokesh Sukhwal — DevOps & Cloud Engineer",
+  "description": "DevOps and cloud engineering portfolio focused on automation, reliability, and observable systems.",
+  "icons": [
+    {
+      "src": "brand-mark.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0B0B0F",
+  "background_color": "#0B0B0F"
+}
