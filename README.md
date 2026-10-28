@@ -56,7 +56,31 @@ npm test -- --watch=false
 npm run build
 ```
 
-## Deploy
+## Deploy to Netlify
+
+This is a Create React App single-page frontend. Netlify builds and serves the React site; the contact backend remains the Supabase Edge Function and PostgreSQL project described below. No server process or database is hosted by Netlify.
+
+1. Push this repository to GitHub and import it in Netlify (**Add new site → Import an existing project**).
+2. Set the **Base directory** to `lokesh_portfolio` if the repository root contains this project in that subdirectory. If the Git repository itself is this directory, leave the base directory blank.
+3. Use these build settings (also recorded in `netlify.toml`):
+   - Build command: `PUBLIC_URL=/ npm run build`
+   - Publish directory: `build`
+4. In **Site configuration → Environment variables**, add the frontend variables from `.env.example`:
+   - `REACT_APP_SUPABASE_URL`
+   - `REACT_APP_SUPABASE_ANON_KEY`
+5. Deploy the site. After Netlify assigns the production URL, update Supabase's `ALLOWED_ORIGINS` secret to include the exact HTTPS origin, for example `https://your-site-name.netlify.app`. Include your custom domain and any preview domains you intend to use. Keep the GitHub Pages origin only if that site should continue working.
+6. Redeploy the Supabase function after changing its secret:
+
+```bash
+npx supabase secrets set ALLOWED_ORIGINS="https://your-site-name.netlify.app,https://your-custom-domain.example,http://localhost:3000"
+npx supabase functions deploy contact-submit --no-verify-jwt
+```
+
+The frontend's anon/publishable key is designed to be public. Never put the Supabase service-role key, `RATE_LIMIT_SALT`, or a Supabase access token in Netlify's `REACT_APP_*` variables; those secrets belong only in Supabase's server-side function secrets. Netlify builds the variables into the browser bundle, so `REACT_APP_*` values are public.
+
+`netlify.toml` also sends deep links to the React app so refreshing a route does not return a 404.
+
+## Deploy to GitHub Pages (legacy)
 
 ```bash
 npm run deploy
